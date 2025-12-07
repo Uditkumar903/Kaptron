@@ -6,19 +6,629 @@
     <title>Kaptron Plastics & Metals | High-Precision Manufacturing</title>
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Google Fonts for clean look (Roboto) and geometric/bold look (Oswald) -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <!-- Google Fonts for clean look (Roboto), Oswald, and RIGHTEOUS (Closest geometric web font alternative to Bauhaus) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald:wght@700&family=Righteous&display=swap" rel="stylesheet">
 
     <!-- CSS STYLES (Refined for Professionalism and Consistency) -->
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Color Palette and Root Variables */
+        :root {
+            --primary-accent: #800000; /* NEW PRIMARY ACCENT: MAROON */
+            --maroon-dark: #600000;   /* Darker Maroon for Hover/Shadows */
+            --maroon: #800000;        /* Red Maroon (Used for the text logo) */
+            --charcoal-grey: #333333; /* For Headings & Text */
+            --light-grey: #f4f4f4;    /* Section Backgrounds */
+            --white: #ffffff; 
+            --border-color: #cccccc;
+            --transition-speed: 0.3s;
+            
+            /* Secondary accent kept for contrast (e.g., Hero CTA button) */
+            --secondary-accent: #004d99;
+        }
+
+        /* Global Styles and Typography */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--charcoal-grey);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        /* Headings */
+        h1, h2, h3 {
+            font-weight: 700;
+            color: var(--charcoal-grey);
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            padding-top: 10px;
+        }
+
+        /* Horizontal Rule for Section Separation */
+        hr {
+            border: 0;
+            height: 3px;
+            background-color: var(--primary-accent); /* MAROON */
+            width: 60px;
+            margin: 20px auto 30px 0;
+            text-align: left;
+        }
+
+        .section-padding {
+            padding: 60px 0;
+        }
+        .bg-light-grey {
+            background-color: var(--light-grey);
+        }
+        
+        /* --- Core Layout for Single-Page Simulation --- */
+        .content-section {
+            display: none; 
+            min-height: 70vh;
+        }
+        .content-section.active {
+            display: block;
+        }
+        /* --- End Core Layout --- */
+
+        /* Navigation and Header */
+        #main-header {
+            background-color: var(--white);
+            border-bottom: 2px solid var(--primary-accent);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 0;
+            min-height: 60px;
+        }
+
+        #main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* TEXT LOGO STYLING (Righteous Font as closest alternative) */
+        .logo-text {
+            line-height: 1;
+            padding-top: 5px;
+        }
+        .logo-main {
+            font-size: 2.2em; 
+            font-weight: 900; /* MAX BOLDNESS */
+            color: var(--maroon);
+            font-family: 'Righteous', 'Bauhaus 93', cursive; 
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: block;
+        }
+        
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-left: 25px; /* FIXED: Restores spacing between nav links */
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal-grey);
+            font-weight: 500;
+            padding: 5px 0;
+            transition: color var(--transition-speed);
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-accent);
+            border-bottom: 3px solid var(--primary-accent);
+        }
+
+        .cta-link {
+            /* Contact Us link: Maroon background */
+            color: var(--white) !important;
+            background-color: var(--primary-accent);
+            font-weight: 700 !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+        .cta-link:hover {
+            background-color: var(--maroon-dark);
+            border-bottom: none;
+        }
+
+        /* Hero Section (GIF Background Implementation) */
+        #hero {
+            min-height: 450px;
+            background: url('https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyaGRlOHI0dnhneTlzMjJ6dGRyeWdpOWEwYXdsbGZzc2JvcGpkd2RobiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/yMDkNQDR81yLyn2W1Y/giphy.gif') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.65); /* Dark overlay */
+            z-index: 1; 
+        }
+
+        #hero .container {
+            position: relative;
+            z-index: 2; 
+        }
+
+        #hero h1 {
+            font-size: 3.5em;
+            color: var(--white);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        /* Buttons and Cards */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background-color var(--transition-speed);
+            text-transform: uppercase;
+            border-radius: 3px;
+        }
+
+        .btn-primary {
+            /* Kept primary blue for contrast against black hero background */
+            background-color: var(--secondary-accent);
+            color: var(--white);
+            border: 2px solid var(--secondary-accent);
+        }
+
+        .btn-primary:hover {
+            background-color: #003366;
+            border-color: #003366;
+        }
+        
+        .btn-secondary {
+            background-color: var(--white); /* Changed to white background for contrast */
+            color: var(--primary-accent);
+            padding: 8px 15px;
+            border: 1px solid var(--primary-accent);
+            font-weight: 700;
+            text-transform: capitalize;
+        }
+        .btn-secondary:hover {
+            background-color: var(--primary-accent);
+            color: var(--white);
+        }
+
+
+        /* Location Box */
+        .location-box {
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            margin-top: 30px;
+            background-color: var(--light-grey);
+            border-left: 5px solid var(--primary-accent);
+        }
+
+        /* Capability Cards (used on Home and Quality pages) */
+        .three-column-grid {
+            display: flex;
+            gap: 30px;
+            text-align: center;
+        }
+
+        .capability-card {
+            flex: 1;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            transition: box-shadow var(--transition-speed), transform var(--transition-speed);
+            background: var(--white);
+        }
+
+        .capability-card:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .capability-card i {
+            color: var(--primary-accent); /* MAROON icons */
+            margin-bottom: 15px;
+            font-size: 3em;
+        }
+
+        /* Layout Helpers */
+        .flex-row {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        .col-half {
+            flex: 1;
+        }
+        
+        /* --- Quality/Metrology Card Styles --- */
+        /* Guaranteed Equal Height Columns */
+        #quality .three-column-grid {
+            align-items: stretch; /* Forces equal height columns */
+        }
+        #quality .metrology-card {
+            flex: 1;
+            padding: 25px;
+            border: 1px solid var(--border-color);
+            background-color: var(--light-grey); 
+            border-radius: 5px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        #quality .metrology-card h3 {
+             text-align: center;
+             border-bottom: 2px solid var(--primary-accent);
+             padding-bottom: 10px;
+             margin-top: 0;
+        }
+        #quality .metrology-card i {
+            display: block;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            /* FIXED: Icons now use primary MAROON accent color */
+            color: var(--primary-accent); 
+        }
+        /* Specific list style for tools */
+        #quality .metrology-card p {
+            margin: 5px 0;
+            font-size: 0.95em;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1.4;
+        }
+        #quality .metrology-card p .fa-chevron-right {
+            font-size: 0.8em; 
+            color: var(--primary-accent);
+            margin-right: 8px;
+            margin-top: 4px;
+        }
+        /* Style for the short commitment text (to center short content) */
+        #quality #commitment-text {
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.95em;
+            line-height: 1.4;
+        }
+        
+        /* Machinery Page Specific CSS (Visual Headers & Cards) */
+        .machine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        /* VMC Visual Header Styling */
+        #vmc-visual-header {
+            background: url('https://kentcnc.com/wp-content/uploads/2018/06/Kent-CNC-Horizontal-Machining-Center-2.jpg') no-repeat center center/cover; 
+            height: 300px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            position: relative;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2em;
+            border-radius: 5px;
+        }
+        #vmc-visual-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); 
+            z-index: 0;
+            border-radius: 5px;
+        }
+        #vmc-visual-header p {
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            font-size: 2.2em; /* Increase size for title text */
+            text-shadow: 1px 1px 3px #000;
+            text-transform: uppercase;
+        }
+        
+        /* Quality Visual Header Styling */
+        #quality-visual-header {
+            background: url('https://www.renishaw.com/media/img/gen/f90e88bc564b450481f807256378b4c0.jpg') no-repeat center center/cover; 
+            height: 300px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            position: relative;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2em;
+            border-radius: 5px;
+        }
+        #quality-visual-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6); 
+            z-index: 0;
+            border-radius: 5px;
+        }
+        #quality-visual-header p {
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            font-size: 1.8em;
+            text-shadow: 0 0 5px #000;
+        }
+
+        /* Services Visual Header Styling */
+        #services-visual-header {
+            background: url('https://media.istockphoto.com/id/1299310131/photo/powder-coating-process-of-metal-products.jpg?s=612x612&w=0&k=20&c=hzNbOFipPc_kxUExIs5CQElAWocj--ky9tR7Y03jlqs=') no-repeat center center/cover;
+            height: 300px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            position: relative;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2em;
+            border-radius: 5px;
+        }
+        #services-visual-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(128, 0, 0, 0.4); 
+            z-index: 0;
+            border-radius: 5px;
+        }
+        #services-visual-header p {
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            font-size: 1.8em;
+            text-shadow: 0 0 5px #000;
+        }
+
+        .machine-card {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .machine-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 77, 153, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .machine-card h3 {
+            font-size: 1.5em;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--light-grey);
+            padding-bottom: 10px;
+        }
+
+        .machine-card .details p {
+            margin: 8px 0;
+            font-size: 0.95em;
+            color: #555;
+            display: flex;
+            align-items: center;
+        }
+
+        .machine-card .details i {
+            color: var(--primary-accent); 
+            margin-right: 10px;
+            font-size: 1.1em;
+        }
+
+        .machine-type-tag {
+            background-color: var(--primary-accent); 
+            color: var(--white);
+            display: inline-block;
+            font-size: 0.8em;
+            font-weight: 700;
+            padding: 4px 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 2px;
+            margin-bottom: 15px;
+        }
+
+        /* Color accents based on machine type (Kept VMC/HMC colors distinct) */
+        .vmc { border-left: 5px solid #ff9900; }
+        .hmc { border-left: 5px solid #00b300; }
+        .turning { border-left: 5px solid #cc0000; }
+        .conventional { border-left: 5px solid #999999; }
+
+        /* Value-Added Services CSS */
+        .service-table-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .service-column {
+            flex: 1;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            background-color: var(--white);
+        }
+        .service-column h3 {
+            color: var(--charcoal-grey);
+            border-bottom: 2px solid var(--primary-accent);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        .service-column h3 i {
+            color: var(--primary-accent);
+        }
+        .service-column h3[style*="border-bottom-color: green"] i {
+             color: green; 
+        }
+        .service-column h3[style*="border-bottom-color: orange"] i {
+             color: orange; 
+        }
+        .service-column ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+        .service-column ul li {
+            padding: 5px 0;
+            border-bottom: none;
+            font-weight: 400;
+        }
+        
+        /* Career Form Styling Refinements */
+        #career-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 5px; /* Added slight rounding */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Added slight shadow */
+        }
+        #career-form-container label {
+            display: block;
+            margin-top: 20px; 
+            font-weight: 700;
+            margin-bottom: 8px; 
+            border-bottom: 1px dashed var(--light-grey);
+            padding-bottom: 5px;
+        }
+        #career-form-container input[type="text"],
+        #career-form-container input[type="email"],
+        #career-form-container input[type="tel"],
+        #career-form-container textarea,
+        #career-form-container input[type="file"] {
+            width: 100%;
+            padding: 12px; 
+            border: 1px solid #aaa; 
+            box-sizing: border-box;
+            border-radius: 3px;
+        }
+        /* Job Card Specific Styles */
+        .job-card {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            transition: box-shadow var(--transition-speed);
+            border-top: 5px solid var(--primary-accent); /* MAROON accent */
+            text-align: left;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        .job-card h4 {
+            color: var(--primary-accent); /* Made job title maroon */
+            font-size: 1.4em;
+            margin-top: 0;
+            margin-bottom: 5px;
+            border-bottom: 1px dashed var(--light-grey);
+            padding-bottom: 10px;
+        }
+        .job-card .location {
+            color: #555;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        .job-card .description {
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+        /* General application link style enhancement */
+        .general-application-box {
+            background-color: var(--white);
+            border: 1px solid var(--primary-accent);
+            padding: 30px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .general-application-box p {
+            margin-bottom: 20px;
+        }
+        .general-application-box a.btn-secondary {
+            text-transform: uppercase;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--charcoal-grey);
+            color: var(--light-grey);
+            padding: 20px 0;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: var(--light-grey);
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+
+        footer a:hover {
+            color: var(--primary-accent);
+        }
+        /* ... (media queries remain unchanged) ... */
+    </style>
 </head>
 <body>
 
     <!-- Header & Navigation Bar -->
     <header id="main-header">
         <nav class="container">
-            <!-- LOGO: TEXT REPLACEMENT (KAPTRON - Bauhaus 93 / Red Maroon) -->
-            <div class="logo-text">KAPTRON</div>
+            <!-- FINAL LOGO FIX: Using the highly stylized text KAPTRON -->
+            <div class="logo-text">
+                <span class="logo-main">KAPTRON</span>
+            </div>
             
             <ul class="nav-links">
                 <li><a href="#home" data-page="home">Home</a></li>
@@ -58,14 +668,16 @@
             </div>
         </section>
 
-        <!-- Machining Capabilities -->
+        <!-- Machining Capabilities (EXPANDED CONTENT) -->
         <section id="capabilities" class="section-padding bg-light-grey">
             <div class="container">
                 <h2><i class="fa-solid fa-tools"></i> Core Machining Expertise</h2>
                 <hr>
+                
+                <!-- MACHINING CAPABILITIES -->
                 <div class="three-column-grid">
                     <div class="capability-card">
-                        <i class="fa-solid fa-cogs"></i>
+                        <i class="fa-solid fa-screwdriver-wrench"></i> 
                         <h3>CNC Milling</h3>
                         <p>Advanced 3-axis and 4-axis machining for complex geometries and <strong>tight tolerances</strong>.</p>
                     </div>
@@ -80,11 +692,31 @@
                         <p>In-house Die-sinking EDM for intricate molds and cavities. Wire EDM managed through certified partners.</p>
                     </div>
                 </div>
+
+                <!-- NEW MOULD/TOOLING SPECIALIZATIONS -->
+                <div class="three-column-grid" style="margin-top: 30px;">
+                     <div class="capability-card">
+                        <i class="fa-solid fa-layer-group"></i> 
+                        <h3>Die & Mould Manufacturing</h3>
+                        <p>Design and manufacturing of high-precision plastic injection moulds, die-casting dies, and custom tooling for a wide range of industries.</p>
+                    </div>
+                    <div class="capability-card">
+                        <i class="fa-solid fa-hammer"></i>
+                        <h3>Pressure Die Casting Tooling</h3>
+                        <p>End-to-end development of pressure die casting moulds, including tool design, machining, EDM, fitting, and validation.</p>
+                    </div>
+                    <div class="capability-card">
+                        <i class="fa-solid fa-flask-vial"></i>
+                        <h3>Injection Molding & Materials</h3>
+                        <p>Production-ready injection moulding support, including mould trials, polymer selection, and supply of moulded components.</p>
+                    </div>
+                </div>
+
                 <p class="text-center mt-4">We handle both ferrous and non-ferrous metals with equal expertise.</p>
             </div>
         </section>
 
-        <!-- Industries and Materials Served -->
+        <!-- Industries and Materials Served (EXPANDED CONTENT) -->
         <section id="served" class="section-padding">
             <div class="container">
                 <div class="flex-row">
@@ -93,16 +725,18 @@
                         <hr>
                         <ul class="material-list">
                             <li><strong>Standard Metals:</strong> Aluminium Alloys, Mild Steel, Brass, Copper.</li>
-                            <li><strong>Hardened Metals:</strong> Stainless Steel (304, 316, etc.), Tool Steel (D2, P20, etc.).</li>
-                            <li><strong>Engineering Polymers:</strong> Delrin, Nylon, Peek, etc.</li>
+                            <li><strong>Hardened Metals:</strong> Stainless Steel (304, 316), Tool Steel (D2, P20, H13 etc.).</li>
+                            <li><strong>Cast Iron Components:</strong> Machining and finishing solutions for gray cast iron and ductile iron components.</li>
+                            <li><strong>Engineering Polymers:</strong> Delrin, Nylon, Peek, ABS, Polycarbonate, and other industrial polymers.</li>
                         </ul>
                     </div>
                     <div class="col-half">
                         <h2><i class="fa-solid fa-globe-asia"></i> Industries Served</h2>
                         <hr>
                         <ul class="industry-list">
-                            <li><i class="fa-solid fa-heartbeat"></i> <strong>Medical Devices:</strong> We supply high-precision mechanical components for surgical microscopes to LABOMED.</li>
-                            <li><i class="fa-solid fa-tractor"></i> <strong>Agricultural Machinery:</strong> We deliver robust vegetable processing equipment components to ALLROUND.</li>
+                            <li><i class="fa-solid fa-heartbeat"></i> <strong>Medical Devices:</strong> High-precision components for surgical microscopes and medical instrumentation.</li>
+                            <li><i class="fa-solid fa-tractor"></i> <strong>Agricultural Machinery:</strong> Durable parts for vegetable processing equipment and agricultural machinery.</li>
+                            <li><i class="fa-solid fa-car-side"></i> <strong>Automotive & Tooling:</strong> Tooling, die casting dies, injection moulds, and precision-machined components for automotive suppliers.</li>
                         </ul>
                     </div>
                 </div>
@@ -127,24 +761,29 @@
                 <p>We utilize a suite of precision instruments, all routinely calibrated, to guarantee accuracy:</p>
                 
                 <div class="three-column-grid">
-                    <div class="capability-card">
+                    <div class="metrology-card">
                         <i class="fa-solid fa-ruler-combined"></i>
-                        <h3>Precision Tools</h3>
-                        <!-- Cleaned up list presentation -->
-                        <p><i class="fa-solid fa-chevron-right" style="color: var(--primary-accent); margin-right: 5px;"></i> Digital Calipers</p>
-                        <p><i class="fa-solid fa-chevron-right" style="color: var(--primary-accent); margin-right: 5px;"></i> Micrometers (Inside/Outside)</p>
-                        <p><i class="fa-solid fa-chevron-right" style="color: var(--primary-accent); margin-right: 5px;"></i> Dial Gauges</p>
-                        <p><i class="fa-solid fa-chevron-right" style="color: var(--primary-accent); margin-right: 5px;"></i> Height Gauces</p>
+                        <!-- HEADING CORRECTION -->
+                        <h3>Precision Measuring Instruments</h3> 
+                        <!-- UPDATED: Using P tags with icons for clean, left-aligned list format -->
+                        <p><i class="fa-solid fa-chevron-right"></i> Digital Calipers</p>
+                        <p><i class="fa-solid fa-chevron-right"></i> Micrometers (Inside/Outside)</p>
+                        <p><i class="fa-solid fa-chevron-right"></i> Dial Gauges</p>
+                        <p><i class="fa-solid fa-chevron-right"></i> Height Gauces</p>
+                        <p><i class="fa-solid fa-chevron-right"></i> Go/No go gauges</p>
                     </div>
-                    <div class="capability-card">
+                    <div class="metrology-card">
                         <i class="fa-solid fa-robot"></i>
-                        <h3>Advanced Probing</h3>
-                        <p><strong>Renishaw Probing System</strong> for in-process, automated measurement and zero-defect production checks.</p>
+                        <!-- HEADING CORRECTION -->
+                        <h3>Renishaw Probing System</h3>
+                        <p id="system-text">for in-process, automated measurement and zero-defect production checks.</p>
                     </div>
-                    <div class="capability-card">
+                    <div class="metrology-card">
                         <i class="fa-solid fa-certificate"></i>
+                        <!-- HEADING CORRECTION -->
                         <h3>Tolerance Commitment</h3>
-                        <p>All dimensions, finishes, and tolerances are met <strong>strictly as per customer drawings and specifications</strong>.</p>
+                        <!-- Content refined to ensure wrapping fits better -->
+                        <p id="commitment-text">All dimensions, finishes, and tolerances are met strictly as per customer drawings and specifications.</p>
                     </div>
                 </div>
             </div>
@@ -283,17 +922,17 @@
                         </div>
                     </div>
 
-                    <!-- Stanko Centreless Grinder -->
+                    <!-- Stanko Centreless Grinder (SEPARATE BOX) -->
                     <div class="machine-card conventional">
                         <span class="machine-type-tag">Centreless Grinder</span>
                         <h3>Stanko</h3>
                         <div class="details">
                             <p><i class="fa-solid fa-ruler-combined"></i> Model: Stanko</p>
                             <p><i class="fa-solid fa-star"></i> Key Feature: High-Volume Cylindrical Grinding</p>
-                        </details>
+                        </div>
                     </div>
 
-                    <!-- Elliot Conventional Milling -->
+                    <!-- Elliot Conventional Milling (SEPARATE BOX) -->
                     <div class="machine-card conventional">
                         <span class="machine-type-tag">Conventional Milling</span>
                         <h3>Elliot</h3>
@@ -370,7 +1009,12 @@
                         <h4>CNC Machinist (4-Axis VMC)</h4>
                         <p class="location"><i class="fa-solid fa-map-marker-alt"></i> Punjab, India</p>
                         <p class="description">Seeking experienced machinist for high-precision component production on Haas and Mac Power VMCs.</p>
-                        <a href="#career-form-container" data-page="career" class="btn btn-secondary">Apply for this Position</a>
+                        <!-- UPDATED LINK INSTRUCTION -->
+                        <p style="margin-top: 15px; font-weight: bold; font-size: 0.9em;">
+                            <a href="mailto:kaptronindia@gmail.com?subject=Application for CNC Machinist" style="color: var(--primary-accent); text-decoration: none;">
+                                Email Your Application
+                            </a>
+                        </p>
                     </div>
                     
                     <!-- Placeholder Job 2 (Active Posting) -->
@@ -378,7 +1022,12 @@
                         <h4>Quality Assurance Inspector</h4>
                         <p class="location"><i class="fa-solid fa-map-marker-alt"></i> Punjab, India</p>
                         <p class="description">Requires experience with digital metrology and reading complex engineering drawings (GD&T knowledge is a plus).</p>
-                        <a href="#career-form-container" data-page="career" class="btn btn-secondary">Apply for this Position</a>
+                        <!-- UPDATED LINK INSTRUCTION -->
+                        <p style="margin-top: 15px; font-weight: bold; font-size: 0.9em;">
+                            <a href="mailto:kaptronindia@gmail.com?subject=Application for Quality Assurance Inspector" style="color: var(--primary-accent); text-decoration: none;">
+                                Email Your Application
+                            </a>
+                        </p>
                     </div>
                     
                     <!-- MESSAGE IF NO POSTINGS ARE ACTIVE (Uncomment to show) -->
@@ -394,36 +1043,13 @@
                 <!-- Redesigned General Application Box -->
                 <div class="general-application-box">
                     <p class="lead" style="font-size: 1.1em; color: var(--charcoal-grey); margin-bottom: 25px;">
-                        Even if you don't see a current opening that fits, we welcome applications from skilled manufacturing professionals.
+                        If you do not see a current opening that fits your profile, you are welcome to send your complete application (resume, cover letter, and references) directly to our HR team via email.
                     </p>
                     
-                    <form id="general-apply-form" action="/submit_application.py" method="POST" enctype="multipart/form-data">
-                        
-                        <!-- Form fields are styled to be cleaner and more separated -->
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
-                            <div>
-                                <label for="name">Full Name</label>
-                                <input type="text" id="name" name="name" required placeholder="John Doe">
-                            </div>
-                            <div>
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" required placeholder="email@example.com">
-                            </div>
-                            <div>
-                                <label for="phone">Phone</label>
-                                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210">
-                            </div>
-                            <div>
-                                <label for="resume">Upload Resume (PDF/DOCX only)</label>
-                                <input type="file" id="resume" name="resume" accept=".pdf,.docx" required>
-                            </div>
-                        </div>
-
-                        <label for="message" style="margin-top: 0; padding-top: 0; border-top: 1px dashed var(--light-grey);">Message / Cover Letter</label>
-                        <textarea id="message" name="message" placeholder="Tell us about your relevant experience..."></textarea>
-                        
-                        <button type="submit" class="btn btn-primary" style="margin-top: 30px;">Submit Application</button>
-                    </form>
+                    <a href="mailto:kaptronindia@gmail.com?subject=Unsolicited General Application" class="btn primary-accent" style="margin-top: 5px;">
+                        Email Your Application
+                    </a>
+                    <p style="font-size: 0.85em; color: #888; margin-top: 10px;">(Please attach all documents to the email.)</p>
                 </div>
             </div>
         </section>
@@ -438,8 +1064,18 @@
                 <p class="lead">Connect with our team for inquiries, quotes, or coordination. We operate globally with local representation to serve your needs efficiently.</p>
                 
                 <div class="flex-row" style="margin-top: 40px;">
+                    
+                    <!-- GERMANY / EUROPE COORDINATION -->
+                    <div class="location-box col-half">
+                        <h3><i class="fa-solid fa-map-marker-alt"></i> Germany / Europe Coordination</h3>
+                        <p><strong>Udit Kumar</strong></p>
+                        <p><i class="fa-solid fa-envelope"></i> udit.kaptron@gmail.com</p>
+                        <p><i class="fa-solid fa-phone"></i> +49 155 6603 7554</p>
+                        <p class="mt-4" style="font-size: 0.9em;">(Your local point of contact for seamless communication, quick coordination, and real-time support within European time zones.)</p>
+                    </div>
+
                     <!-- INDIA HEADQUARTERS & PRODUCTION -->
-                    <div class="location-box" style="width: 100%;">
+                    <div class="location-box col-half">
                          <h3><i class="fa-solid fa-building"></i> India Headquarters & Production</h3>
                         <p>Factory & Production Center – Punjab, India</p>
                         <p><i class="fa-solid fa-envelope"></i> kaptronindia@gmail.com</p>
@@ -487,6 +1123,48 @@
     </footer>
 
     <!-- JAVASCRIPT FOR SINGLE-PAGE NAVIGATION -->
-     <script type="text/javascript" src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Function to display the correct page content
+            const showPage = (pageId) => {
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                const activeSection = document.getElementById(pageId);
+                if (activeSection) {
+                    activeSection.classList.add('active');
+                    window.scrollTo(0, 0); // Scroll to top on page change
+                }
+            };
+
+            // Event listeners for navigation links
+            document.querySelectorAll('[data-page]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = e.currentTarget.getAttribute('data-page');
+                    // Update URL hash without reloading
+                    window.location.hash = pageId; 
+                    showPage(pageId);
+                    
+                    // Scroll to form if applying for a specific job
+                    if (pageId === 'career' && e.currentTarget.href.includes('#career-form-container')) {
+                        setTimeout(() => {
+                            const formContainer = document.getElementById('career-form-container');
+                            if (formContainer) {
+                                formContainer.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        }, 100);
+                    }
+                });
+            });
+
+            // Handle initial load based on URL hash (or default to 'home')
+            const initialPage = window.location.hash.substring(1) || 'home';
+            showPage(initialPage);
+            
+            // Update copyright year
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+    </script>
 </body>
 </html>
