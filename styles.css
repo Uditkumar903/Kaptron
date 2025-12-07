@@ -1,0 +1,577 @@
+        /* Color Palette and Root Variables */
+        :root {
+            --primary-accent: #800000; /* NEW PRIMARY ACCENT: MAROON */
+            --maroon-dark: #600000;   /* Darker Maroon for Hover/Shadows */
+            --maroon: #800000;        /* Red Maroon (Used for the text logo) */
+            --charcoal-grey: #333333; /* For Headings & Text */
+            --light-grey: #f4f4f4;    /* Section Backgrounds */
+            --white: #ffffff; 
+            --border-color: #cccccc;
+            --transition-speed: 0.3s;
+            
+            /* Secondary accent kept for contrast (e.g., Hero CTA button) */
+            --secondary-accent: #004d99;
+        }
+
+        /* Global Styles and Typography */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--charcoal-grey);
+            background-color: var(--white);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        /* Headings */
+        h1, h2, h3 {
+            font-weight: 700;
+            color: var(--charcoal-grey);
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            padding-top: 10px;
+        }
+
+        /* Horizontal Rule for Section Separation */
+        hr {
+            border: 0;
+            height: 3px;
+            background-color: var(--primary-accent); /* MAROON */
+            width: 60px;
+            margin: 20px auto 30px 0;
+            text-align: left;
+        }
+
+        .section-padding {
+            padding: 60px 0;
+        }
+        .bg-light-grey {
+            background-color: var(--light-grey);
+        }
+        
+        /* --- Core Layout for Single-Page Simulation --- */
+        .content-section {
+            display: none; 
+            min-height: 70vh;
+        }
+        .content-section.active {
+            display: block;
+        }
+        /* --- End Core Layout --- */
+
+        /* Navigation and Header */
+        #main-header {
+            background-color: var(--white);
+            border-bottom: 2px solid var(--primary-accent);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 0;
+            min-height: 60px;
+        }
+
+        #main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* TEXT LOGO STYLING */
+        .logo-text {
+            font-size: 2.2em; 
+            font-weight: 700; 
+            color: var(--maroon);
+            font-family: 'Oswald', sans-serif; 
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding-top: 5px;
+        }
+        
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal-grey);
+            font-weight: 500;
+            padding: 5px 0;
+            transition: color var(--transition-speed);
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-accent);
+            border-bottom: 3px solid var(--primary-accent);
+        }
+
+        .cta-link {
+            /* Contact Us link: Maroon background */
+            color: var(--white) !important;
+            background-color: var(--primary-accent);
+            font-weight: 700 !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+        .cta-link:hover {
+            background-color: var(--maroon-dark);
+            border-bottom: none;
+        }
+
+        /* Hero Section (GIF Background Implementation) */
+        #hero {
+            min-height: 450px;
+            background: url('https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyaGRlOHI0dnhneTlzMjJ6dGRyeWdpOWEwYXdsbGZzc2JvcGpkd2RobiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/yMDkNQDR81yLyn2W1Y/giphy.gif') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.65); /* Dark overlay */
+            z-index: 1; 
+        }
+
+        #hero .container {
+            position: relative;
+            z-index: 2; 
+        }
+
+        #hero h1 {
+            font-size: 3.5em;
+            color: var(--white);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        /* Buttons and Cards */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background-color var(--transition-speed);
+            text-transform: uppercase;
+            border-radius: 3px;
+        }
+
+        .btn-primary {
+            /* Kept primary blue for contrast against black hero background */
+            background-color: var(--secondary-accent);
+            color: var(--white);
+            border: 2px solid var(--secondary-accent);
+        }
+
+        .btn-primary:hover {
+            background-color: #003366;
+            border-color: #003366;
+        }
+        
+        .btn-secondary {
+            background-color: var(--white); /* Changed to white background for contrast */
+            color: var(--primary-accent);
+            padding: 8px 15px;
+            border: 1px solid var(--primary-accent);
+            font-weight: 700;
+            text-transform: capitalize;
+        }
+        .btn-secondary:hover {
+            background-color: var(--primary-accent);
+            color: var(--white);
+        }
+
+
+        /* Location Box */
+        .location-box {
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            margin-top: 30px;
+            background-color: var(--light-grey);
+            border-left: 5px solid var(--primary-accent);
+        }
+
+        /* Capability Cards (used on Home and Quality pages) */
+        .three-column-grid {
+            display: flex;
+            gap: 30px;
+            text-align: center;
+        }
+
+        .capability-card {
+            flex: 1;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            transition: box-shadow var(--transition-speed), transform var(--transition-speed);
+            background: var(--white);
+        }
+
+        .capability-card:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .capability-card i {
+            color: var(--primary-accent); /* MAROON icons */
+            margin-bottom: 15px;
+            font-size: 3em;
+        }
+
+        /* Layout Helpers */
+        .flex-row {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        .col-half {
+            flex: 1;
+        }
+        
+        /* --- Quality/Machine List Specific Styles --- */
+        #quality .capability-card {
+            text-align: left;
+        }
+        #quality .capability-card h3 {
+            text-align: center; 
+        }
+        #quality .capability-card i.fa-solid {
+            display: block;
+            text-align: center;
+            font-size: 3em;
+        }
+        /* Specific list style for tools */
+        #quality .capability-card p {
+            margin-left: 20px;
+            margin-right: 20px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
+        #quality .capability-card p i {
+            margin-right: 5px;
+            font-size: 0.8em; /* Smaller checkmark icon */
+            color: var(--primary-accent);
+        }
+        
+        /* Machinery Page Specific CSS (Visual Headers & Cards) */
+        .machine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        /* VMC Visual Header Styling */
+        #vmc-visual-header {
+            background: url('https://kentcnc.com/wp-content/uploads/2018/06/Kent-CNC-Horizontal-Machining-Center-2.jpg') no-repeat center center/cover; 
+            height: 300px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            position: relative;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2em;
+            border-radius: 5px;
+        }
+        #vmc-visual-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); 
+            z-index: 0;
+            border-radius: 5px;
+        }
+        #vmc-visual-header p {
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            font-size: 2.2em; /* Increase size for title text */
+            text-shadow: 1px 1px 3px #000;
+            text-transform: uppercase;
+        }
+        
+        /* Quality Visual Header Styling */
+        #quality-visual-header {
+            background: url('https://www.renishaw.com/media/img/gen/f90e88bc564b450481f807256378b4c0.jpg') no-repeat center center/cover; 
+            height: 300px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            position: relative;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2em;
+            border-radius: 5px;
+        }
+        #quality-visual-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6); 
+            z-index: 0;
+            border-radius: 5px;
+        }
+        #quality-visual-header p {
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            font-size: 1.8em;
+            text-shadow: 0 0 5px #000;
+        }
+
+        /* Services Visual Header Styling */
+        #services-visual-header {
+            background: url('https://media.istockphoto.com/id/1299310131/photo/powder-coating-process-of-metal-products.jpg?s=612x612&w=0&k=20&c=hzNbOFipPc_kxUExIs5CQElAWocj--ky9tR7Y03jlqs=') no-repeat center center/cover;
+            height: 300px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            position: relative;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2em;
+            border-radius: 5px;
+        }
+        #services-visual-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(128, 0, 0, 0.4); 
+            z-index: 0;
+            border-radius: 5px;
+        }
+        #services-visual-header p {
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            font-size: 1.8em;
+            text-shadow: 0 0 5px #000;
+        }
+
+        .machine-card {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .machine-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 77, 153, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .machine-card h3 {
+            font-size: 1.5em;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--light-grey);
+            padding-bottom: 10px;
+        }
+
+        .machine-card .details p {
+            margin: 8px 0;
+            font-size: 0.95em;
+            color: #555;
+            display: flex;
+            align-items: center;
+        }
+
+        .machine-card .details i {
+            color: var(--primary-accent); 
+            margin-right: 10px;
+            font-size: 1.1em;
+        }
+
+        .machine-type-tag {
+            background-color: var(--primary-accent); 
+            color: var(--white);
+            display: inline-block;
+            font-size: 0.8em;
+            font-weight: 700;
+            padding: 4px 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 2px;
+            margin-bottom: 15px;
+        }
+
+        /* Color accents based on machine type (Kept VMC/HMC colors distinct) */
+        .vmc { border-left: 5px solid #ff9900; }
+        .hmc { border-left: 5px solid #00b300; }
+        .turning { border-left: 5px solid #cc0000; }
+        .conventional { border-left: 5px solid #999999; }
+
+        /* Value-Added Services CSS */
+        .service-table-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .service-column {
+            flex: 1;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            background-color: var(--white);
+        }
+        .service-column h3 {
+            color: var(--charcoal-grey);
+            border-bottom: 2px solid var(--primary-accent);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        .service-column h3 i {
+            color: var(--primary-accent);
+        }
+        .service-column h3[style*="border-bottom-color: green"] i {
+             color: green; 
+        }
+        .service-column h3[style*="border-bottom-color: orange"] i {
+             color: orange; 
+        }
+        .service-column ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+        .service-column ul li {
+            padding: 5px 0;
+            border-bottom: none;
+            font-weight: 400;
+        }
+        
+        /* Career Form Styling Refinements */
+        #career-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 5px; /* Added slight rounding */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Added slight shadow */
+        }
+        #career-form-container label {
+            display: block;
+            margin-top: 20px; 
+            font-weight: 700;
+            margin-bottom: 8px; 
+            border-bottom: 1px dashed var(--light-grey);
+            padding-bottom: 5px;
+        }
+        #career-form-container input[type="text"],
+        #career-form-container input[type="email"],
+        #career-form-container input[type="tel"],
+        #career-form-container textarea,
+        #career-form-container input[type="file"] {
+            width: 100%;
+            padding: 12px; 
+            border: 1px solid #aaa; 
+            box-sizing: border-box;
+            border-radius: 3px;
+        }
+        /* Job Card Specific Styles */
+        .job-card {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            transition: box-shadow var(--transition-speed);
+            border-top: 5px solid var(--primary-accent); /* MAROON accent */
+            text-align: left;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        .job-card h4 {
+            color: var(--primary-accent); /* Made job title maroon */
+            font-size: 1.4em;
+            margin-top: 0;
+            margin-bottom: 5px;
+            border-bottom: 1px dashed var(--light-grey);
+            padding-bottom: 10px;
+        }
+        .job-card .location {
+            color: #555;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        .job-card .description {
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+        /* General application link style enhancement */
+        .general-application-box {
+            background-color: var(--white);
+            border: 1px solid var(--primary-accent);
+            padding: 30px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .general-application-box p {
+            margin-bottom: 20px;
+        }
+        .general-application-box a.btn-secondary {
+            text-transform: uppercase;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--charcoal-grey);
+            color: var(--light-grey);
+            padding: 20px 0;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: var(--light-grey);
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+
+        footer a:hover {
+            color: var(--primary-accent);
+        }
+        /* ... (media queries remain unchanged) ... */
