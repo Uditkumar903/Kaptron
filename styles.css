@@ -89,9 +89,11 @@
 
         /* TEXT LOGO STYLING */
         .logo-img {
-    height: 60px;     /* adjust as needed */
-    width: auto;
-    }
+    height: 60px;         /* controls logo height */
+    width: auto;          /* keeps proportions */
+    object-fit: contain;  /* prevents stretching */
+    display: block;
+}
 
         }
         
