@@ -88,14 +88,11 @@
         }
 
         /* TEXT LOGO STYLING */
-        .logo-text {
-            font-size: 2.2em; 
-            font-weight: 700; 
-            color: var(--maroon);
-            font-family: 'Oswald', sans-serif; 
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            padding-top: 5px;
+        .logo-img {
+    height: 60px;     /* adjust as needed */
+    width: auto;
+    }
+
         }
         
         .nav-links {
