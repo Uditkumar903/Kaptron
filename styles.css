@@ -87,14 +87,12 @@
             align-items: center;
         }
 
-        /* TEXT LOGO STYLING */
-        .logo-img {
-    height: 60px;         /* controls logo height */
-    width: auto;          /* keeps proportions */
-    object-fit: contain;  /* prevents stretching */
-    display: block;
-}
-
+       .logo-img {
+    max-height: 40px;
+    max-width: 150px;
+    width: auto;
+    height: auto;
+     
         }
         
         .nav-links {
