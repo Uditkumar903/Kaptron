@@ -87,9 +87,11 @@ hr {
 }
 
 .logo-img {
-    max-height: 40%;
-    width: auto;
-    display: block;
+    height: 50px;        /* Change this value to set logo height */
+    max-height: 60px;    /* Maximum height so it doesn’t exceed header */
+    width: auto;         /* Maintain original aspect ratio */
+    display: block;      /* Prevent inline issues */
+    object-fit: contain; /* Ensure it scales proportionally */
 }
 
 .nav-links {
