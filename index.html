@@ -9,7 +9,306 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Google Fonts for clean look (Roboto), Oswald, and RIGHTEOUS (Closest geometric web font alternative to Bauhaus) -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald:wght@700&family=Righteous&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="css/styles.css">
+   <style>/* ---------------- Color Palette and Root Variables ---------------- */
+:root {
+    --primary-accent: #800000; /* MAROON */
+    --maroon-dark: #600000;   /* Darker Maroon */
+    --charcoal-grey: #333333; /* Text color */
+    --light-grey: #f4f4f4;    /* Section background */
+    --white: #ffffff; 
+    --border-color: #cccccc;
+    --transition-speed: 0.3s;
+    --secondary-accent: #004d99; /* Blue for contrast */
+}
+
+/* ---------------- Global Styles ---------------- */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: var(--charcoal-grey);
+    background-color: var(--white);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Headings */
+h1, h2, h3 {
+    font-weight: 700;
+    color: var(--charcoal-grey);
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 2.2em;
+    padding-top: 10px;
+}
+
+/* Horizontal Rule */
+hr {
+    border: 0;
+    height: 3px;
+    background-color: var(--primary-accent);
+    width: 60px;
+    margin: 20px auto 30px 0;
+    text-align: left;
+}
+
+/* Section Padding & Background */
+.section-padding {
+    padding: 60px 0;
+}
+.bg-light-grey {
+    background-color: var(--light-grey);
+}
+
+/* Content Sections (Single Page Simulation) */
+.content-section {
+    display: none; 
+    min-height: 70vh;
+}
+.content-section.active {
+    display: block;
+}
+
+/* ---------------- Header & Navigation ---------------- */
+/* --- Header --- */
+#main-header {
+    background-color: var(--white);
+    border-bottom: 2px solid var(--primary-accent);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 60px;           /* header height */
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+}
+
+#main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;           /* container fills header */
+}
+
+.logo-text {
+    height: 100%;           /* fill header height */
+    display: flex;
+    align-items: center;    /* vertical center */
+}
+
+.logo-img {
+    max-height: 50px;       /* change this to resize logo */
+    height: auto;
+    width: auto;
+    display: block;
+    object-fit: contain;    /* maintain aspect ratio */
+}
+/* Navigation links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--charcoal-grey);
+    font-weight: 500;
+    padding: 5px 0;
+    transition: color var(--transition-speed);
+}
+
+.nav-links a:hover {
+    color: var(--primary-accent);
+    border-bottom: 3px solid var(--primary-accent);
+}
+
+/* CTA Button */
+.cta-link {
+    color: var(--white) !important;
+    background-color: var(--primary-accent);
+    font-weight: 700 !important;
+    padding: 15px 30px;
+    border-radius: 2px;
+    transition: background-color 0.2s;
+}
+
+.cta-link:hover {
+    background-color: var(--maroon-dark);
+}
+/* ---------------- Hero Section ---------------- */
+#hero {
+    min-height: 450px;
+    background: url('https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyaGRlOHI0dnhneTlzMjJ6dGRyeWdpOWEwYXdsbGZzc2JvcGpkd2RobiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/yMDkNQDR81yLyn2W1Y/giphy.gif') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 1; 
+}
+
+#hero .container {
+    position: relative;
+    z-index: 2; 
+}
+
+#hero h1 {
+    font-size: 3.5em;
+    color: var(--white);
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+/* ---------------- Buttons ---------------- */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+    text-transform: uppercase;
+    border-radius: 3px;
+}
+
+.btn-primary {
+    background-color: var(--secondary-accent);
+    color: var(--white);
+    border: 2px solid var(--secondary-accent);
+}
+
+.btn-primary:hover {
+    background-color: #003366;
+    border-color: #003366;
+}
+
+.btn-secondary {
+    background-color: var(--white);
+    color: var(--primary-accent);
+    padding: 8px 15px;
+    border: 1px solid var(--primary-accent);
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-accent);
+    color: var(--white);
+}
+
+/* ---------------- Cards & Layout ---------------- */
+.three-column-grid {
+    display: flex;
+    gap: 30px;
+    text-align: center;
+}
+
+.capability-card {
+    flex: 1;
+    padding: 30px;
+    border: 1px solid var(--border-color);
+    transition: box-shadow var(--transition-speed), transform var(--transition-speed);
+    background: var(--white);
+}
+
+.capability-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.capability-card i {
+    color: var(--primary-accent);
+    margin-bottom: 15px;
+    font-size: 3em;
+}
+
+.flex-row {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.col-half {
+    flex: 1;
+}
+
+/* ---------------- Forms & Career ---------------- */
+#career-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+#career-form-container label {
+    display: block;
+    margin-top: 20px; 
+    font-weight: 700;
+    margin-bottom: 8px; 
+    border-bottom: 1px dashed var(--light-grey);
+    padding-bottom: 5px;
+}
+
+#career-form-container input[type="text"],
+#career-form-container input[type="email"],
+#career-form-container input[type="tel"],
+#career-form-container textarea,
+#career-form-container input[type="file"] {
+    width: 100%;
+    padding: 12px; 
+    border: 1px solid #aaa; 
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+
+/* ---------------- Footer ---------------- */
+footer {
+    background-color: var(--charcoal-grey);
+    color: var(--light-grey);
+    padding: 20px 0;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: var(--light-grey);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+
+footer a:hover {
+    color: var(--primary-accent);
+}
+</style>
 </head>
 <body>
 
