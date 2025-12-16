@@ -4,12 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kaptron Plastics & Metals | High-Precision Manufacturing</title>
-    <link rel="icon" type="image/png" href="favicon1.png">
+    <!-- Favicon: Added your official logo as the tab icon -->
+    <link rel="icon" href="logo3.png" type="image/png">
+    
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Google Fonts for clean look (Roboto), Oswald, and RIGHTEOUS (Closest geometric web font alternative to Bauhaus) -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald:wght@700&family=Righteous&display=swap" rel="stylesheet">
-   <style>
+    <!-- Google Fonts for clean look (Roboto) and Oswald -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
+
+    <!-- CSS STYLES (Refined for Professionalism and Consistency) -->
+    <style>
+        /* CRITICAL: Enables smooth animation when navigating to sections */
+        html {
+            scroll-behavior: smooth;
+        }
+
         /* Color Palette and Root Variables */
         :root {
             --primary-accent: #800000; /* NEW PRIMARY ACCENT: MAROON */
@@ -75,6 +84,8 @@
         .content-section {
             display: none; 
             min-height: 70vh;
+            /* FIX: Push content down when targeted by navigation jump */
+            scroll-margin-top: 90px; 
         }
         .content-section.active {
             display: block;
@@ -82,78 +93,91 @@
         /* --- End Core Layout --- */
 
         /* Navigation and Header */
-       #main-header {
-    background-color: var(--white);
-    border-bottom: 2px solid var(--primary-accent);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    height: 60px;           /* header height */
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-}
+        #main-header {
+            background-color: var(--white);
+            border-bottom: 2px solid var(--primary-accent);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            /* CRITICAL: Increased vertical padding for space */
+            padding: 15px 0; 
+            min-height: 60px;
+        }
 
-#main-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 100%;           /* container fills header */
-}
+        #main-header .container {
+            display: flex;
+            justify-content: space-between;
+            /* CRITICAL: Vertically centers logo and links */
+            align-items: center; 
+        }
 
-.logo-text {
-    height: 100%;           /* fill header height */
-    display: flex;
-    align-items: center;    /* vertical center */
-}
+        /* LOGO IMAGE STYLING */
+        .logo-img {
+            /* Set fixed height to control size */
+            height: 40px; 
+            width: auto;
+            display: block;
+        }
+        
+        /* LOGO TEXT CONTAINER (Used for image now) */
+        .logo-text {
+            line-height: 1;
+            padding: 0; 
+            margin: 0;
+        }
+        
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
 
-.logo-img {
-    max-height: 35px;       /* change this to resize logo */
-    height: auto;
-    width: auto;
-    display: block;
-    object-fit: contain;    /* maintain aspect ratio */
-}
-/* Navigation links */
-.nav-links {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
+        .nav-links li {
+            margin-left: 25px; 
+            padding: 0; 
+        }
 
-.nav-links li {
-    margin-left: 25px;
-}
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal-grey);
+            font-weight: 500;
+            padding: 5px 0;
+            transition: color var(--transition-speed);
+            cursor: pointer;
+            position: static; 
+        }
+        .cta-link {
+            position: relative;
+            top: 0; 
+        }
 
-.nav-links a {
-    text-decoration: none;
-    color: var(--charcoal-grey);
-    font-weight: 500;
-    padding: 5px 0;
-    transition: color var(--transition-speed);
-}
 
-.nav-links a:hover {
-    color: var(--primary-accent);
-    border-bottom: 3px solid var(--primary-accent);
-}
+        .nav-links a:hover {
+            color: var(--primary-accent);
+            border-bottom: 3px solid var(--primary-accent);
+        }
 
-/* CTA Button */
-.cta-link {
-    color: var(--white) !important;
-    background-color: var(--primary-accent);
-    font-weight: 700 !important;
-    padding: 15px 30px;
-    border-radius: 2px;
-    transition: background-color 0.2s;
-}
-
-.cta-link:hover {
-    background-color: var(--maroon-dark);
-}
+        /* CONTACT US BUTTON STYLING (A. Sticky "Request a Quote") */
+        .cta-link {
+            color: var(--white) !important;
+            background-color: var(--primary-accent);
+            font-weight: 700 !important;
+            /* Significantly Increased padding for a much larger button background */
+            padding: 16px 30px; 
+            border-radius: 5px;
+            transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+        
+        .cta-link:hover {
+            background-color: var(--maroon-dark);
+            border-bottom: none;
+            /* Subtle Eye-catching Animation */
+            box-shadow: 0 0 15px rgba(128, 0, 0, 0.5); 
+            transform: translateY(-1px);
+        }
 
         /* Hero Section (GIF Background Implementation) */
         #hero {
@@ -206,7 +230,7 @@
             /* Kept primary blue for contrast against black hero background */
             background-color: var(--secondary-accent);
             color: var(--white);
-            border: 2px solid var(--secondary-accent);
+            border: 22px solid var(--secondary-accent);
         }
 
         .btn-primary:hover {
@@ -300,7 +324,6 @@
             text-align: center;
             font-size: 2.5em;
             margin-bottom: 15px;
-            /* FIXED: Icons now use primary MAROON accent color */
             color: var(--primary-accent); 
         }
         /* Specific list style for tools */
@@ -332,109 +355,6 @@
             gap: 30px;
             margin-top: 40px;
         }
-        
-        /* VMC Visual Header Styling */
-        #vmc-visual-header {
-            background: url('https://kentcnc.com/wp-content/uploads/2018/06/Kent-CNC-Horizontal-Machining-Center-2.jpg') no-repeat center center/cover; 
-            height: 300px;
-            margin-top: 40px;
-            margin-bottom: 40px;
-            display: flex;
-            align-items: flex-end;
-            padding: 20px;
-            position: relative;
-            color: white;
-            font-weight: 700;
-            font-size: 1.2em;
-            border-radius: 5px;
-        }
-        #vmc-visual-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5); 
-            z-index: 0;
-            border-radius: 5px;
-        }
-        #vmc-visual-header p {
-            position: relative;
-            z-index: 1;
-            margin: 0;
-            font-size: 2.2em; /* Increase size for title text */
-            text-shadow: 1px 1px 3px #000;
-            text-transform: uppercase;
-        }
-        
-        /* Quality Visual Header Styling */
-        #quality-visual-header {
-            background: url('https://www.renishaw.com/media/img/gen/f90e88bc564b450481f807256378b4c0.jpg') no-repeat center center/cover; 
-            height: 300px;
-            margin-top: 40px;
-            margin-bottom: 40px;
-            display: flex;
-            align-items: flex-end;
-            padding: 20px;
-            position: relative;
-            color: white;
-            font-weight: 700;
-            font-size: 1.2em;
-            border-radius: 5px;
-        }
-        #quality-visual-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6); 
-            z-index: 0;
-            border-radius: 5px;
-        }
-        #quality-visual-header p {
-            position: relative;
-            z-index: 1;
-            margin: 0;
-            font-size: 1.8em;
-            text-shadow: 0 0 5px #000;
-        }
-
-        /* Services Visual Header Styling */
-        #services-visual-header {
-            background: url('https://media.istockphoto.com/id/1299310131/photo/powder-coating-process-of-metal-products.jpg?s=612x612&w=0&k=20&c=hzNbOFipPc_kxUExIs5CQElAWocj--ky9tR7Y03jlqs=') no-repeat center center/cover;
-            height: 300px;
-            margin-top: 40px;
-            margin-bottom: 40px;
-            display: flex;
-            align-items: flex-end;
-            padding: 20px;
-            position: relative;
-            color: white;
-            font-weight: 700;
-            font-size: 1.2em;
-            border-radius: 5px;
-        }
-        #services-visual-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(128, 0, 0, 0.4); 
-            z-index: 0;
-            border-radius: 5px;
-        }
-        #services-visual-header p {
-            position: relative;
-            z-index: 1;
-            margin: 0;
-            font-size: 1.8em;
-            text-shadow: 0 0 5px #000;
-        }
 
         .machine-card {
             background-color: var(--white);
@@ -442,6 +362,7 @@
             padding: 30px;
             position: relative;
             transition: transform 0.3s, box-shadow 0.3s;
+            padding-bottom: 15px; /* Add space for spec separator */
         }
 
         .machine-card:hover {
@@ -452,17 +373,24 @@
         .machine-card h3 {
             font-size: 1.5em;
             margin-top: 5px;
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* Adjusted margin */
             border-bottom: 1px solid var(--light-grey);
             padding-bottom: 10px;
         }
 
-        .machine-card .details p {
+        .machine-card .details p { 
             margin: 8px 0;
             font-size: 0.95em;
             color: #555;
             display: flex;
             align-items: center;
+            border-bottom: 1px dotted #ccc; /* Added separator */
+            padding-bottom: 5px;
+        }
+        .machine-card .details p strong {
+            color: var(--charcoal-grey);
+            font-weight: 600;
+            margin-left: 5px;
         }
 
         .machine-card .details i {
@@ -489,6 +417,154 @@
         .hmc { border-left: 5px solid #00b300; }
         .turning { border-left: 5px solid #cc0000; }
         .conventional { border-left: 5px solid #999999; }
+
+        /* VMC Visual Header Styling */
+        #vmc-visual-header {
+            background: url('https://kentcnc.com/wp-content/uploads/2018/06/Kent-CNC-Horizontal-Machining-Center-2.jpg') no-repeat center center/cover; 
+            height: 350px; 
+            margin: 0 0 40px 0; 
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            position: relative;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2em;
+            border-radius: 5px;
+            text-align: center; 
+        }
+        #vmc-visual-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); 
+            z-index: 0;
+            border-radius: 5px;
+        }
+        #vmc-visual-header p {
+            position: relative;
+            z-index: 1;
+            margin: 0 auto; 
+            font-size: 2.2em; 
+            font-weight: 700; 
+            text-shadow: 1px 1px 3px #000;
+            text-transform: uppercase; /* CAPITALIZED */
+        }
+        
+        /* Quality Visual Header Styling */
+        #quality-visual-header {
+            /* Now stretches full width */
+            background: url('https://www.renishaw.com/media/img/gen/f90e88bc564b450481f807256378b4c0.jpg') no-repeat center center/cover; 
+            height: 350px; 
+            margin: 0 0 40px 0; /* MAINTAINING GAP */
+            display: flex;
+            align-items: flex-end;
+            padding: 20px 5%; 
+            position: relative;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2em;
+            text-align: center; 
+        }
+        #quality-visual-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6); 
+            z-index: 0;
+        }
+        #quality-visual-header p {
+            position: relative;
+            z-index: 1;
+            margin: 0 auto; 
+            font-size: 2.2em; /* SET FONT SIZE */
+            font-weight: 700; /* SET BOLDNESS */
+            text-shadow: 0 0 5px #000;
+            max-width: 1200px; 
+            width: 100%;
+            text-align: center; 
+            text-transform: uppercase; /* CAPITALIZED */
+        }
+
+        /* Services Visual Header Styling */
+        #services-visual-header {
+            background: url('https://media.istockphoto.com/id/1299310131/photo/powder-coating-process-of-metal-products.jpg?s=612x612&w=0&k=20&c=hzNbOFipPc_kxUExIs5CQElAWocj--ky9tR7Y03jlqs=') no-repeat center center/cover;
+            height: 350px; 
+            margin: 0 0 40px 0; 
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            position: relative;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2em;
+            border-radius: 5px;
+            text-align: center; 
+        }
+        #services-visual-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(128, 0, 0, 0.4); 
+            z-index: 0;
+            border-radius: 5px;
+        }
+        #services-visual-header p {
+            position: relative;
+            z-index: 1;
+            margin: 0 auto; 
+            font-size: 2.2em; /* SET FONT SIZE */
+            font-weight: 700; /* SET BOLDNESS */
+            text-shadow: 0 0 5px #000;
+            text-transform: uppercase; /* CAPITALIZED */
+        }
+        
+        /* Career Visual Header Styling */
+        #career-visual-header {
+            /* Now stretches full width */
+            background: url('https://www.thepowerscompany.com/wp-content/uploads/2020/12/people-and-gears-working-1024x576.webp') no-repeat center center/cover;
+            height: 350px; 
+            margin: 0 0 40px 0; /* MAINTAINING GAP */
+            display: flex;
+            align-items: flex-end; /* Align content to the bottom */
+            justify-content: center; 
+            padding: 0 5%; 
+            position: relative;
+            text-align: center; 
+        }
+        #career-visual-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); 
+            z-index: 0;
+        }
+        #career-visual-header p.header-text { /* Targeting the new p element */
+            position: relative;
+            z-index: 1;
+            color: var(--white);
+            font-size: 2.2em; /* SET FONT SIZE */
+            font-weight: 700; /* SET BOLDNESS */
+            text-shadow: 1px 1px 5px #000;
+            margin: 0 auto 20px auto; 
+            padding-top: 0;
+            max-width: 1200px;
+            width: 100%;
+            text-transform: uppercase; /* CAPITALIZED */
+        }
+
 
         /* Value-Added Services CSS */
         .service-table-container {
@@ -524,7 +600,7 @@
         .service-column ul li {
             padding: 5px 0;
             border-bottom: none;
-            font-weight: 400;
+            font-weight: 401; /* Fix for font weight consistency */
         }
         
         /* Career Form Styling Refinements */
@@ -618,18 +694,60 @@
         footer a:hover {
             color: var(--primary-accent);
         }
-        /* ... (media queries remain unchanged) ... */
-</style>
+        
+        /* --- MOBILE RESPONSIVENESS (Max Width 768px) --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                /* Allows nav items to wrap on small screens, if needed */
+                flex-wrap: wrap; 
+                justify-content: center;
+                margin-top: 10px;
+            }
+            .nav-links li {
+                margin: 5px 10px; /* Reduced spacing */
+            }
+            #main-header .container {
+                flex-direction: column; /* Stack logo and nav vertically on mobile */
+                text-align: center;
+            }
+            
+            /* General column stacking */
+            .flex-row, .three-column-grid, .service-table-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            /* Machinery grid adjustment */
+            .machine-grid {
+                grid-template-columns: 1fr; /* Single column */
+                gap: 20px;
+            }
+
+            .section-padding {
+                padding: 40px 0; /* Reduced padding on sections */
+            }
+            
+            #hero h1 {
+                font-size: 2.5em; /* Smaller hero text */
+            }
+            
+            .col-half, .capability-card, .metrology-card, .service-column {
+                width: 100%; 
+                margin-bottom: 0;
+            }
+            
+        }
+    </style>
 </head>
 <body>
 
     <!-- Header & Navigation Bar -->
     <header id="main-header">
         <nav class="container">
-            <!-- FINAL LOGO FIX: Using the highly stylized text KAPTRON -->
+            <!-- LOGO: OFFICIAL IMAGE -->
             <div class="logo-text">
-    <img src="logo2.png" alt="Kaptron Logo" class="logo-img">
-    </div>
+                <img src="logo3.png" alt="Kaptron Logo" class="logo-img">
+            </div>
             
             <ul class="nav-links">
                 <li><a href="#home" data-page="home">Home</a></li>
@@ -713,7 +831,10 @@
                     </div>
                 </div>
 
-                <p class="text-center mt-4">We handle both ferrous and non-ferrous metals with equal expertise.</p>
+                <!-- STYLED NOTE BLOCK FOR HOME PAGE -->
+                <blockquote class="note-block" style="text-align: center; margin: 40px auto 0 auto; max-width: 700px; border-left: 5px solid var(--primary-accent); padding: 15px; background: var(--white); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);">
+                    We handle both ferrous and non-ferrous metals with equal expertise.
+                </blockquote>
             </div>
         </section>
 
@@ -746,16 +867,16 @@
     </div>
 
     <!-- 2. QUALITY PAGE CONTENT -->
+    <!-- Removed .container wrap from section to allow header image full width -->
     <div id="quality" class="content-section">
         <section class="section-padding">
-            <div class="container">
-                <!-- Main Heading removed, as it's on the visual header -->
-                
-                <!-- NEW QUALITY VISUAL HEADER -->
-                <div id="quality-visual-header">
-                    <p>Rigorous Quality Control and Metrology</p>
-                </div>
+            <!-- NEW QUALITY VISUAL HEADER (Full Width) -->
+            <div id="quality-visual-header">
+                <p>RIGOROUS QUALITY CONTROL AND METROLOGY</p>
+            </div>
 
+            <!-- Content needs to be wrapped in container -->
+            <div class="container">
                 <p class="lead">Quality is our foundation. We maintain a <strong>rigorous quality control process</strong> throughout the manufacturing cycle to ensure every component meets the exacting standards of our global clientele.</p>
 
                 <h3>Calibrated Metrology Instruments</h3>
@@ -766,7 +887,7 @@
                         <i class="fa-solid fa-ruler-combined"></i>
                         <!-- HEADING CORRECTION -->
                         <h3>Precision Measuring Instruments</h3> 
-                        <!-- UPDATED: Using P tags with icons for clean, left-aligned list format -->
+                        <!-- UPDATED: Using p tags with icons for clean, left-aligned list format -->
                         <p><i class="fa-solid fa-chevron-right"></i> Digital Calipers</p>
                         <p><i class="fa-solid fa-chevron-right"></i> Micrometers (Inside/Outside)</p>
                         <p><i class="fa-solid fa-chevron-right"></i> Dial Gauges</p>
@@ -789,14 +910,14 @@
                 </div>
             </div>
         </section>
-    </div>
+    </div> <!-- /#quality -->
 
     <!-- 3. MACHINERY PAGE CONTENT -->
     <div id="machinery" class="content-section bg-light-grey">
         <section class="section-padding">
             <!-- VMC Visual Header (Now carries the main page title) -->
             <div id="vmc-visual-header">
-                <p>Machine List: Our Production Powerhouse</p>
+                <p>MACHINE LIST: OUR PRODUCTION POWERHOUSE</p>
             </div>
         
             <div class="container">
@@ -810,40 +931,70 @@
                         <span class="machine-type-tag">CNC VMC</span>
                         <h3>HAAS VF2, 4th Axis</h3>
                         <div class="details">
-                            <p><i class="fa-solid fa-expand-arrows-alt"></i> Travel: 760 x 460 x 500 mm</p>
-                            <p><i class="fa-solid fa-star"></i> Key Feature: Integrated 4th Axis</p>
+                            <p>
+                                <i class="fa-solid fa-expand-arrows-alt"></i> Travel (X x Y x Z): 
+                                <strong>760 x 460 x 500 mm</strong>
+                            </p>
+                            <p>
+                                <i class="fa-solid fa-star"></i> Key Feature: 
+                                <strong>Integrated 4th Axis</strong>
+                            </p>
                         </div>
                     </div>
                     <div class="machine-card vmc">
                         <span class="machine-type-tag">CNC VMC</span>
                         <h3>Mac Power PRO 1000, 4th Axis</h3>
                         <div class="details">
-                            <p><i class="fa-solid fa-expand-arrows-alt"></i> Travel: 1010 x 610 x 600 mm</p>
-                            <p><i class="fa-solid fa-star"></i> Key Feature: Large Capacity, 4th Axis</p>
+                            <p>
+                                <i class="fa-solid fa-expand-arrows-alt"></i> Travel (X x Y x Z): 
+                                <strong>1010 x 610 x 600 mm</strong>
+                            </p>
+                            <p>
+                                <i class="fa-solid fa-star"></i> Key Feature: 
+                                <strong>Large Capacity, 4th Axis</strong>
+                            </p>
                         </div>
                     </div>
                     <div class="machine-card vmc">
                         <span class="machine-type-tag">CNC VMC</span>
                         <h3>Excel KIWA 510</h3>
                         <div class="details">
-                            <p><i class="fa-solid fa-expand-arrows-alt"></i> Travel: 680 x 430 x 450 mm</p>
-                            <p><i class="fa-solid fa-star"></i> Key Feature: Standard VMC</p>
+                            <p>
+                                <i class="fa-solid fa-expand-arrows-alt"></i> Travel (X x Y x Z): 
+                                <strong>680 x 430 x 450 mm</strong>
+                            </p>
+                            <p>
+                                <i class="fa-solid fa-star"></i> Key Feature: 
+                                <strong>Standard VMC</strong>
+                            </p>
                         </div>
                     </div>
                     <div class="machine-card vmc">
                         <span class="machine-type-tag">CNC VMC</span >
                         <h3>Yantrang APC 1000</h3>
                         <div class="details">
-                            <p><i class="fa-solid fa-expand-arrows-alt"></i> Travel: 1010 x 610 x 660 mm</p>
-                            <p><i class="fa-solid fa-star"></i> Key Feature: Automatic Pallet Changer</p>
+                             <p>
+                                <i class="fa-solid fa-expand-arrows-alt"></i> Travel (X x Y x Z): 
+                                <strong>1010 x 610 x 660 mm</strong>
+                            </p>
+                            <p>
+                                <i class="fa-solid fa-star"></i> Key Feature: 
+                                <strong>Automatic Pallet Changer</strong>
+                            </p>
                         </div>
                     </div>
                     <div class="machine-card vmc">
                         <span class="machine-type-tag">CNC VMC</span>
                         <h3>Kitamura MY CENTRE 3Xi</h3>
                         <div class="details">
-                            <p><i class="fa-solid fa-expand-arrows-alt"></i> Travel: 762 x 450 x 460 mm</p>
-                            <p><i class="fa-solid fa-star"></i> Key Feature: Pallet Changer</p>
+                            <p>
+                                <i class="fa-solid fa-expand-arrows-alt"></i> Travel (X x Y x Z): 
+                                <strong>762 x 450 x 460 mm</strong>
+                            </p>
+                            <p>
+                                <i class="fa-solid fa-star"></i> Key Feature: 
+                                <strong>Pallet Changer</strong>
+                            </p>
                         </div>
                     </div>
                     
@@ -852,8 +1003,14 @@
                         <span class="machine-type-tag">CNC HMC</span>
                         <h3>Kiwa KNH 426x</h3>
                         <div class="details">
-                            <p><i class="fa-solid fa-expand-arrows-alt"></i> Travel: 600 x 600 x 600 mm</p>
-                            <p><i class="fa-solid fa-star"></i> Key Feature: High-Volume 6-Pallet Pool</p>
+                            <p>
+                                <i class="fa-solid fa-expand-arrows-alt"></i> Travel (X x Y x Z): 
+                                <strong>600 x 600 x 600 mm</strong>
+                            </p>
+                            <p>
+                                <i class="fa-solid fa-star"></i> Key Feature: 
+                                <strong>High-Volume 6-Pallet Pool</strong>
+                            </p>
                         </div>
                     </div>
 
@@ -862,24 +1019,42 @@
                         <span class="machine-type-tag">CNC Turning</span>
                         <h3>Yantrang MICRO TURN</h3>
                         <div class="details">
-                            <p><i class="fa-solid fa-gear"></i> Model: MICRO TURN</p>
-                            <p><i class="fa-solid fa-star"></i> Key Feature: High-Precision Turning</p>
+                             <p>
+                                <i class="fa-solid fa-gear"></i> Model: 
+                                <strong>MICRO TURN</strong>
+                            </p>
+                            <p>
+                                <i class="fa-solid fa-star"></i> Key Feature: 
+                                <strong>High-Precision Turning</strong>
+                            </p>
                         </div>
                     </div>
                     <div class="machine-card turning">
                         <span class="machine-type-tag">CNC Turning</span>
                         <h3>Nakamura Tome SC 300</h3>
                         <div class="details">
-                            <p><i class="fa-solid fa-gear"></i> Model: SC 300</p>
-                            <p><i class="fa-solid fa-star"></i> Key Feature: High-Performance Turning</p>
+                            <p>
+                                <i class="fa-solid fa-gear"></i> Model: 
+                                <strong>SC 300</strong>
+                            </p>
+                            <p>
+                                <i class="fa-solid fa-star"></i> Key Feature: 
+                                <strong>High-Performance Turning</strong>
+                            </p>
                         </div>
                     </div>
                     <div class="machine-card turning">
                         <span class="machine-type-tag">CNC Turning</span>
                         <h3>JOHNFORD ST 40</h3>
                         <div class="details">
-                            <p><i class="fa-solid fa-gear"></i> Model: ST 40</p>
-                            <p><i class="fa-solid fa-star"></i> Key Feature: Heavy-Duty Turning</p>
+                            <p>
+                                <i class="fa-solid fa-gear"></i> Model: 
+                                <strong>ST 40</strong>
+                            </p>
+                            <p>
+                                <i class="fa-solid fa-star"></i> Key Feature: 
+                                <strong>Heavy-Duty Turning</strong>
+                            </p>
                         </div>
                     </div>
 
@@ -888,8 +1063,14 @@
                         <span class="machine-type-tag">EDM</span>
                         <h3>Sparkonix Die-Sinking</h3>
                         <div class="details">
-                            <p><i class="fa-solid fa-bolt"></i> Process: Die-Sinking EDM</p>
-                            <p><i class="fa-solid fa-star"></i> Key Feature: Intricate Molds and Cavities</p>
+                            <p>
+                                <i class="fa-solid fa-bolt"></i> Process: 
+                                <strong>Die-Sinking EDM</strong>
+                            </p>
+                            <p>
+                                <i class="fa-solid fa-star"></i> Key Feature: 
+                                <strong>Intricate Molds and Cavities</strong>
+                            </p>
                         </div>
                     </div>
                     
@@ -898,8 +1079,14 @@
                         <span class="machine-type-tag">Conventional Lathe</span>
                         <h3>Kirloskar</h3>
                         <div class="details">
-                            <p><i class="fa-solid fa-gear"></i> Model: Kirloskar</p>
-                            <p><i class="fa-solid fa-star"></i> Key Feature: General Purpose Turning</p>
+                            <p>
+                                <i class="fa-solid fa-gear"></i> Model: 
+                                <strong>Kirloskar</strong>
+                            </p>
+                            <p>
+                                <i class="fa-solid fa-star"></i> Key Feature: 
+                                <strong>General Purpose Turning</strong>
+                            </p>
                         </div>
                     </div>
 
@@ -908,8 +1095,14 @@
                         <span class="machine-type-tag">Big Bore Lathe</span>
                         <h3>Aashu</h3>
                         <div class="details">
-                            <p><i class="fa-solid fa-gear"></i> Model: Aashu</p>
-                            <p><i class="fa-solid fa-star"></i> Key Feature: Large Diameter Capacity</p>
+                            <p>
+                                <i class="fa-solid fa-gear"></i> Model: 
+                                <strong>Aashu</strong>
+                            </p>
+                            <p>
+                                <i class="fa-solid fa-star"></i> Key Feature: 
+                                <strong>Large Diameter Capacity</strong>
+                            </p>
                         </div>
                     </div>
                     
@@ -918,8 +1111,14 @@
                         <span class="machine-type-tag">Surface Grinder</span>
                         <h3>Churchil</h3>
                         <div class="details">
-                            <p><i class="fa-solid fa-ruler-combined"></i> Model: Churchil</p>
-                            <p><i class="fa-solid fa-star"></i> Key Feature: Precision Flat Finishing</p>
+                            <p>
+                                <i class="fa-solid fa-ruler-combined"></i> Model: 
+                                <strong>Churchil</strong>
+                            </p>
+                            <p>
+                                <i class="fa-solid fa-star"></i> Key Feature: 
+                                <strong>Precision Flat Finishing</strong>
+                            </p>
                         </div>
                     </div>
 
@@ -928,8 +1127,14 @@
                         <span class="machine-type-tag">Centreless Grinder</span>
                         <h3>Stanko</h3>
                         <div class="details">
-                            <p><i class="fa-solid fa-ruler-combined"></i> Model: Stanko</p>
-                            <p><i class="fa-solid fa-star"></i> Key Feature: High-Volume Cylindrical Grinding</p>
+                            <p>
+                                <i class="fa-solid fa-ruler-combined"></i> Model: 
+                                <strong>Stanko</strong>
+                            </p>
+                            <p>
+                                <i class="fa-solid fa-star"></i> Key Feature: 
+                                <strong>High-Volume Cylindrical Grinding</strong>
+                            </p>
                         </div>
                     </div>
 
@@ -938,14 +1143,20 @@
                         <span class="machine-type-tag">Conventional Milling</span>
                         <h3>Elliot</h3>
                         <div class="details">
-                            <p><i class="fa-solid fa-cogs"></i> Model: Elliot</p>
-                            <p><i class="fa-solid fa-star"></i> Key Feature: Tooling and Setup Support</p>
+                            <p>
+                                <i class="fa-solid fa-cogs"></i> Model: 
+                                <strong>Elliot</strong>
+                            </p>
+                            <p>
+                                <i class="fa-solid fa-star"></i> Key Feature: 
+                                <strong>Tooling and Setup Support</strong>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-    </div>
+    </div> <!-- /#machinery -->
 
     <!-- 4. VALUE-ADDED SERVICES PAGE CONTENT -->
     <div id="services" class="content-section">
@@ -954,51 +1165,56 @@
             
             <!-- NEW SERVICES VISUAL HEADER -->
             <div id="services-visual-header">
-                <p>Surface Finishing and Treatment</p>
+                <p>SURFACE FINISHING AND TREATMENT</p>
             </div>
             
-            <!-- TEXT MOVED HERE (Placed after the visual header) -->
-            <p class="lead" style="margin-top: 30px;">We offer a complete manufacturing solution, managing all post-machining processes to deliver a product ready for assembly.</p>
+            <!-- Content wrapped in container -->
+            <div class="container">
+                <!-- TEXT MOVED HERE (Placed after the visual header) -->
+                <p class="lead" style="margin-top: 30px;">We offer a complete manufacturing solution, managing all post-machining processes to deliver a product ready for assembly.</p>
 
-            <div class="service-table-container">
-                <div class="service-column">
-                    <h3 style="border-bottom-color: green;"><i class="fa-solid fa-factory"></i> In-House Capabilities</h3>
-                    <ul>
-                        <li><strong>Sandblasting</strong></li>
-                        <li><strong>Powder Coating</strong></li>
-                        <li><strong>Painting Booth</strong></li>
-                    </ul>
+                <div class="service-table-container">
+                    <div class="service-column">
+                        <h3 style="border-bottom-color: green;"><i class="fa-solid fa-factory"></i> In-House Capabilities</h3>
+                        <ul>
+                            <li><strong>Sandblasting</strong></li>
+                            <li><strong>Powder Coating</strong></li>
+                            <li><strong>Painting Booth</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="service-column">
+                        <h3 style="border-bottom-color: orange;"><i class="fa-solid fa-handshake"></i> Certified Partner Network</h3>
+                        <ul>
+                            <li><strong>Heat Treatment</strong></li>
+                            <li><strong>Anodizing</strong></li>
+                            <li><strong>Nickel Plating</strong></li>
+                            <li><strong>Laser Marking</strong></li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="service-column">
-                    <h3 style="border-bottom-color: orange;"><i class="fa-solid fa-handshake"></i> Certified Partner Network</h3>
-                    <ul>
-                        <li><strong>Heat Treatment</strong></li>
-                        <li><strong>Anodizing</strong></li>
-                        <li><strong>Nickel Plating</strong></li>
-                        <li><strong>Laser Marking</strong></li>
-                    </ul>
-                </div>
+                <blockquote class="note-block" style="margin-top: 40px; border-left: 5px solid var(--primary-accent); padding: 15px; background: var(--light-grey);">
+                    <strong>Quality Assurance for Subcontracting:</strong> We take full responsibility for the quality of all subcontracted processes, managing our certified partner network to ensure final product standards are met.
+                </blockquote>
             </div>
-
-            <blockquote class="note-block" style="margin-top: 40px; border-left: 5px solid var(--primary-accent); padding: 15px; background: var(--light-grey);">
-                <strong>Quality Assurance for Subcontracting:</strong> We take full responsibility for the quality of all subcontracted processes, managing our certified partner network to ensure final product standards are met.
-            </blockquote>
         </section>
-    </div>
+    </div> <!-- /#services -->
 
     <!-- 5. CAREER PAGE CONTENT -->
+    <!-- Removed .container wrap from section to allow header image full width -->
     <div id="career" class="content-section bg-light-grey">
         <section class="section-padding">
-            <div class="container">
-                <!-- CAREER VISUAL HEADER -->
-                <div id="career-visual-header" style="background: url('https://www.thepowerscompany.com/wp-content/uploads/2020/12/people-and-gears-working-1024x576.webp') no-repeat center center/cover; height: 300px; margin-top: 40px; margin-bottom: 40px; border-radius: 5px;">
-                    <!-- The image itself serves as the visual background -->
-                </div>
+            <!-- CAREER VISUAL HEADER (Full Width) -->
+            <div id="career-visual-header">
+                <p class="header-text">JOIN THE KAPTRON TEAM</p>
+            </div>
             
+            <!-- Content needs to be wrapped in container -->
+            <div class="container">
                 <h2><i class="fa-solid fa-briefcase"></i> Join the Kaptron Team</h2>
                 <hr>
-                <p class="lead" style="margin-bottom: 30px;">Kaptron is a place where precision meets passion. Explore our current openings or submit a general application below.</p>
+                <p class="lead">Kaptron is a place where precision meets passion. Explore our current openings or submit a general application below.</p>
 
                 <h3>Current Openings</h3>
                 
@@ -1012,7 +1228,7 @@
                         <p class="description">Seeking experienced machinist for high-precision component production on Haas and Mac Power VMCs.</p>
                         <!-- UPDATED LINK INSTRUCTION -->
                         <p style="margin-top: 15px; font-weight: bold; font-size: 0.9em;">
-                            <a href="mailto:kaptronindia@gmail.com?subject=Application for CNC Machinist" style="color: var(--primary-accent); text-decoration: none;">
+                            <a href="mailto:info@kaptron.in?subject=Application for CNC Machinist" style="color: var(--primary-accent); text-decoration: none;">
                                 Email Your Application
                             </a>
                         </p>
@@ -1025,7 +1241,7 @@
                         <p class="description">Requires experience with digital metrology and reading complex engineering drawings (GD&T knowledge is a plus).</p>
                         <!-- UPDATED LINK INSTRUCTION -->
                         <p style="margin-top: 15px; font-weight: bold; font-size: 0.9em;">
-                            <a href="mailto:kaptronindia@gmail.com?subject=Application for Quality Assurance Inspector" style="color: var(--primary-accent); text-decoration: none;">
+                            <a href="mailto:info@kaptron.in?subject=Application for Quality Assurance Inspector" style="color: var(--primary-accent); text-decoration: none;">
                                 Email Your Application
                             </a>
                         </p>
@@ -1047,14 +1263,14 @@
                         If you do not see a current opening that fits your profile, you are welcome to send your complete application (resume, cover letter, and references) directly to our HR team via email.
                     </p>
                     
-                    <a href="mailto:kaptronindia@gmail.com?subject=Unsolicited General Application" class="btn primary-accent" style="margin-top: 5px;">
+                    <a href="mailto:info@kaptron.in?subject=Unsolicited General Application" class="btn primary-accent" style="margin-top: 5px;">
                         Email Your Application
                     </a>
                     <p style="font-size: 0.85em; color: #888; margin-top: 10px;">(Please attach all documents to the email.)</p>
                 </div>
             </div>
         </section>
-    </div>
+    </div> <!-- /#career -->
     
     <!-- 6. CONTACT US PAGE CONTENT -->
     <div id="contact" class="content-section">
@@ -1079,7 +1295,7 @@
                     <div class="location-box col-half">
                          <h3><i class="fa-solid fa-building"></i> India Headquarters & Production</h3>
                         <p>Factory & Production Center – Punjab, India</p>
-                        <p><i class="fa-solid fa-envelope"></i> kaptronindia@gmail.com</p>
+                        <p><i class="fa-solid fa-envelope"></i> info@kaptron.in</p>
                         <p><i class="fa-solid fa-phone"></i> +91 9888344696</p>
                         
                         <address class="mt-4" style="border-top: 1px dashed var(--border-color); padding-top: 15px;">
@@ -1108,7 +1324,7 @@
                 </div>
             </div>
         </section>
-    </div>
+    </div> <!-- /#contact -->
     </main>
 
     <!-- Footer -->
@@ -1126,15 +1342,19 @@
     <!-- JAVASCRIPT FOR SINGLE-PAGE NAVIGATION -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            
             // Function to display the correct page content
             const showPage = (pageId) => {
+                // Remove 'active' from all content sections
                 document.querySelectorAll('.content-section').forEach(section => {
                     section.classList.remove('active');
                 });
+                // Add 'active' to the target section
                 const activeSection = document.getElementById(pageId);
                 if (activeSection) {
                     activeSection.classList.add('active');
-                    window.scrollTo(0, 0); // Scroll to top on page change
+                    // Optionally scroll to the top of the content area
+                    window.scrollTo(0, 0); 
                 }
             };
 
@@ -1143,11 +1363,11 @@
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const pageId = e.currentTarget.getAttribute('data-page');
-                    // Update URL hash without reloading
+                    // Update URL hash without reloading (important for history/refresh)
                     window.location.hash = pageId; 
                     showPage(pageId);
                     
-                    // Scroll to form if applying for a specific job
+                    // Specific logic for career form scroll (kept for future use)
                     if (pageId === 'career' && e.currentTarget.href.includes('#career-form-container')) {
                         setTimeout(() => {
                             const formContainer = document.getElementById('career-form-container');
@@ -1160,6 +1380,7 @@
             });
 
             // Handle initial load based on URL hash (or default to 'home')
+            // This ensures deep links or refresh starts on the correct page
             const initialPage = window.location.hash.substring(1) || 'home';
             showPage(initialPage);
             
