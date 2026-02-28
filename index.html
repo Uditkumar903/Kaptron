@@ -4,1489 +4,809 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Kaptron Plastics & Metals | High-Precision Manufacturing</title>
-    <!-- Favicon: Added your official logo as the tab icon -->
-    <link rel="icon" href="favicon.png" type="image/png">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon1.png" type="image/png">
     
-    <!-- Font Awesome for Icons -->
+    <!-- External Assets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Google Fonts for clean look (Roboto) and Oswald -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 
-    <!-- CSS STYLES (Refined for Professionalism and Consistency) -->
     <style>
-        /* Global Resets to prevent horizontal shifting */
+        /* --- DESIGN TOKENS & RESET --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html, body {
-            width: 100%;
-            overflow-x: hidden;
-            position: relative;
-            scroll-behavior: smooth;
-        }
-
         :root {
-            --primary-accent: #800000; /* NEW PRIMARY ACCENT: MAROON */
-            --maroon-dark: #600000;   /* Darker Maroon for Hover/Shadows */
-            --maroon: #800000;        /* Red Maroon (Used for the text logo) */
-            --charcoal-grey: #333333; /* For Headings & Text */
-            --light-grey: #f4f4f4;    /* Section Backgrounds */
-            --white: #ffffff; 
-            --border-color: #cccccc;
-            --transition-speed: 0.3s;
-            
-            /* Secondary accent kept for contrast (e.g., Hero CTA button) */
-            --secondary-accent: #004d99;
+            --primary: #800000;      /* Signature Maroon */
+            --primary-light: #a00000;
+            --primary-dark: #5a0000;
+            --surface: #ffffff;
+            --bg-body: #fdfdfd;
+            --bg-alt: #f8f9fa;
+            --text-main: #1a1a1b;
+            --text-muted: #4b5563;
+            --border: #e5e7eb;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 20px -2px rgba(0,0,0,0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Typography */
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Inter', sans-serif;
+        }
+
         body {
-            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
             line-height: 1.6;
-            color: var(--charcoal-grey);
-            background-color: var(--white);
+            overflow-x: hidden;
+            width: 100%;
         }
 
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            position: relative;
         }
 
-        /* Headings */
-        h1, h2, h3 {
-            font-weight: 700;
-            color: var(--charcoal-grey);
-            line-height: 1.2;
+        /* --- HEADINGS --- */
+        h1, h2, h3, .oswald {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-main);
         }
 
-        h2 {
-            font-size: 2.2em;
-            padding-top: 10px;
-        }
+        h2 { font-size: 2.25rem; margin-bottom: 0.5rem; }
+        .section-padding { padding: 80px 0; }
 
-        /* Horizontal Rule for Section Separation */
-        hr {
+        hr.accent {
             border: 0;
-            height: 3px;
-            background-color: var(--primary-accent); /* MAROON */
-            width: 60px;
-            margin: 20px 0 30px 0;
+            height: 4px;
+            background: var(--primary);
+            width: 80px;
+            margin: 20px 0 40px 0;
         }
 
-        .section-padding {
-            padding: 60px 0;
-        }
-        .bg-light-grey {
-            background-color: var(--light-grey);
-        }
-        
-        /* --- Core Layout for Single-Page Simulation --- */
-        .content-section {
-            display: none; 
-            min-height: 70vh;
-            /* FIX: Push content down when targeted by navigation jump */
-            scroll-margin-top: 90px; 
-        }
-        .content-section.active {
-            display: block;
-        }
-        /* --- End Core Layout --- */
-
-        /* Navigation and Header */
+        /* --- NAVIGATION --- */
         #main-header {
-            background-color: var(--white);
-            border-bottom: 2px solid var(--primary-accent);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 1000;
-            /* CRITICAL: Increased vertical padding for space */
-            padding: 15px 0; 
-            min-height: 60px;
+            padding: 12px 0;
+            box-shadow: var(--shadow-sm);
         }
 
         #main-header .container {
             display: flex;
             justify-content: space-between;
-            /* CRITICAL: Vertically centers logo and links */
-            align-items: center; 
-        }
-
-        /* LOGO IMAGE STYLING */
-        .logo-img {
-            /* Set fixed height to control size */
-            height: 40px; 
-            width: auto;
-            display: block;
-        }
-        
-        /* LOGO TEXT CONTAINER (Used for image now) */
-        .logo-text {
-            line-height: 1;
-            padding: 0; 
-            margin: 0;
-        }
-        
-        .nav-links {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
             align-items: center;
         }
 
-        .nav-links li {
-            margin-left: 25px; 
-            padding: 0; 
+        .logo-img {
+            height: 44px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--charcoal-grey);
-            font-weight: 500;
-            padding: 5px 0;
-            transition: color var(--transition-speed);
-            cursor: pointer;
-            position: static; 
-        }
-        .cta-link {
-            position: relative;
-            top: 0; 
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            transition: var(--transition);
+            letter-spacing: 0.5px;
         }
 
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
 
-        .nav-links a:hover {
-            color: var(--primary-accent);
-            border-bottom: 3px solid var(--primary-accent);
+        .cta-btn {
+            background-color: var(--primary);
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(128, 0, 0, 0.2);
+            text-decoration: none;
         }
 
-        /* CONTACT US BUTTON STYLING (A. Sticky "Request a Quote") */
-        .cta-link {
-            color: var(--white) !important;
-            background-color: var(--primary-accent);
-            font-weight: 700 !important;
-            /* Significantly Increased padding for a much larger button background */
-            padding: 16px 30px; 
-            border-radius: 5px;
-            transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
-        }
-        
-        .cta-link:hover {
-            background-color: var(--maroon-dark);
-            border-bottom: none;
-            /* Subtle Eye-catching Animation */
-            box-shadow: 0 0 15px rgba(128, 0, 0, 0.5); 
-            transform: translateY(-1px);
+        /* --- PAGE SYSTEM --- */
+        .content-section {
+            display: none;
+            animation: slideIn 0.5s ease-out;
         }
 
-        /* Hero Section (GIF Background Implementation) */
+        .content-section.active { display: block; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- HERO & BANNERS --- */
         #hero {
-            min-height: 450px;
-            background: url('https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyaGRlOHI0dnhneTlzMjJ6dGRyeWdpOWEwYXdsbGZzc2JvcGpkd2RobiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/yMDkNQDR81yLyn2W1Y/giphy.gif') no-repeat center center/cover;
+            height: 550px;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyaGRlOHI0dnhneTlzMjJ6dGRyeWdpOWEwYXdsbGZzc2JvcGpkd2RobiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/yMDkNQDR81yLyn2W1Y/giphy.gif');
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            color: white;
         }
-        
-        #hero::before {
+
+        #hero h1 { color: white; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; }
+
+        .visual-header {
+            height: 380px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .visual-header::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.65); /* Dark overlay */
-            z-index: 1; 
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.75));
         }
 
-        #hero .container {
+        .visual-header h1 {
             position: relative;
-            z-index: 2; 
+            z-index: 1;
+            color: white;
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            padding: 0 1rem;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
-        #hero h1 {
-            font-size: 3.5em;
-            color: var(--white);
-            text-transform: uppercase;
-            margin-bottom: 15px;
+        /* --- GRIDS & CARDS --- */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
-        /* Buttons and Cards */
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            font-weight: 700;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: background-color var(--transition-speed);
-            text-transform: uppercase;
-            border-radius: 3px;
-        }
-
-        .btn-primary {
-            /* Kept primary blue for contrast against black hero background */
-            background-color: var(--secondary-accent);
-            color: var(--white);
-            border: 22px solid var(--secondary-accent);
-        }
-
-        .btn-primary:hover {
-            background-color: #003366;
-            border-color: #003366;
-        }
-        
-        .btn-secondary {
-            background-color: var(--white); /* Changed to white background for contrast */
-            color: var(--primary-accent);
-            padding: 8px 15px;
-            border: 1px solid var(--primary-accent);
-            font-weight: 700;
-            text-transform: capitalize;
-        }
-        .btn-secondary:hover {
-            background-color: var(--primary-accent);
-            color: var(--white);
-        }
-
-
-        /* Location Box */
-        .location-box {
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            margin-top: 30px;
-            background-color: var(--light-grey);
-            border-left: 5px solid var(--primary-accent);
-        }
-
-        /* Capability Cards (used on Home and Quality pages) */
-        .three-column-grid {
-            display: flex;
-            gap: 30px;
+        .card {
+            background: var(--surface);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
             text-align: center;
-        }
-
-        .capability-card {
-            flex: 1;
-            padding: 30px;
-            border: 1px solid var(--border-color);
-            transition: box-shadow var(--transition-speed), transform var(--transition-speed);
-            background: var(--white);
-        }
-
-        .capability-card:hover {
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .capability-card i {
-            color: var(--primary-accent); /* MAROON icons */
-            margin-bottom: 15px;
-            font-size: 3em;
-        }
-
-        /* Layout Helpers */
-        .flex-row {
-            display: flex;
-            gap: 40px;
-            align-items: flex-start;
-        }
-        .col-half {
-            flex: 1;
-        }
-
-        /* Custom list styling for served/services sections */
-        .served-list, .service-column ul {
-            list-style-type: disc;
-            padding-left: 25px; /* Ensures dots are visible */
-            text-align: left;
-            margin-top: 10px;
-        }
-
-        .served-list li, .service-column ul li {
-            margin-bottom: 10px;
-        }
-        
-        /* --- Quality/Metrology Card Styles --- */
-        /* Guaranteed Equal Height Columns */
-        #quality .three-column-grid {
-            align-items: stretch; /* Forces equal height columns */
-        }
-        #quality .metrology-card {
-            flex: 1;
-            padding: 35px; /* Standardized and increased padding */
-            border: 1px solid var(--border-color);
-            background-color: var(--light-grey); 
-            border-radius: 8px;
-            text-align: left;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* Ensure headers align at top */
         }
-        #quality .metrology-card h3 {
-             text-align: center;
-             border-bottom: 2px solid var(--primary-accent);
-             padding-bottom: 15px;
-             margin: 0 0 25px 0; /* MAINTAINS EQUAL DISTANCE FOR ALL THREE HEADINGS */
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
         }
-        #quality .metrology-card i {
+
+        .card i { color: var(--primary); font-size: 3rem; margin-bottom: 1.5rem; }
+        .card h3 { font-size: 1.35rem; margin-bottom: 1rem; color: var(--primary); }
+
+        .flex-list {
+            list-style: none;
+            text-align: left;
+            margin-top: 1rem;
+        }
+
+        .flex-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .flex-list i {
+            font-size: 0.9rem !important;
+            color: var(--primary) !important;
+            margin-bottom: 0 !important;
+            margin-top: 5px !important;
+            flex-shrink: 0;
+        }
+
+        .list-label {
+            font-weight: 700;
+            color: var(--text-main);
             display: block;
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 15px; /* EQUAL DISTANCE FOR ALL THREE ICONS */
-            color: var(--primary-accent); 
-        }
-        /* Specific list style for tools */
-        #quality .metrology-card p {
-            margin: 0 0 12px 0; /* Standardized spacing between points */
-            font-size: 0.95em;
-            display: flex;
-            align-items: flex-start;
-            line-height: 1.4;
-        }
-        #quality .metrology-card p .fa-chevron-right {
-            font-size: 0.8em; 
-            color: var(--primary-accent);
-            margin-right: 10px;
-            margin-top: 4px;
-        }
-        /* Style for the short commitment text (to center short content) */
-        #quality #commitment-text {
-            text-align: center;
-            padding: 0;
-            font-size: 0.95em;
-            line-height: 1.6;
-            width: 100%;
+            margin-bottom: 2px;
         }
 
-        /* Container to center list items on mobile while keeping items left-aligned */
-        .metrology-list-wrapper {
-            width: 100%;
+        .list-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .quote-block {
+            background: var(--bg-alt);
+            border-left: 6px solid var(--primary);
+            padding: 30px;
+            margin: 50px auto;
+            max-width: 900px;
+            text-align: center;
+            font-weight: 700;
+            color: var(--text-main);
+            border-radius: 4px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* --- MACHINERY CATALOG STYLE --- */
+        .machine-card {
+            background: white;
+            border-top: 4px solid var(--primary);
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .machine-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+        
+        .machine-category {
+            font-size: 0.75rem;
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .machine-card h3 { margin-bottom: 1rem; font-size: 1.25rem; }
+
+        .spec-item {
             display: flex;
             flex-direction: column;
-            align-items: stretch;
+            padding: 6px 0;
+            border-bottom: 1px solid #f1f1f1;
+            font-size: 0.875rem;
         }
-        
-        /* Machinery Page Specific CSS (Visual Headers & Cards) */
-        .machine-grid {
+
+        .spec-label { font-weight: 700; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; }
+        .spec-value { font-weight: 500; color: var(--text-main); }
+
+        /* --- JOB POSTING PREMIUM STYLE --- */
+        .job-card-hero {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .job-card-header {
+            background: var(--primary);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .job-card-header h3 { color: white; font-size: 2rem; margin-bottom: 10px; }
+        .job-meta { font-weight: 500; opacity: 0.9; font-size: 1rem; }
+
+        .job-card-content { padding: 50px; }
+        .job-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .machine-card {
-            background-color: var(--white);
-            border: 1px solid var(--border-color);
-            padding: 30px;
-            position: relative;
-            transition: transform 0.3s, box-shadow 0.3s;
-            padding-bottom: 15px; /* Add space for spec separator */
-        }
-
-        .machine-card:hover {
-            box-shadow: 0 10px 20px rgba(0, 77, 153, 0.1);
-            transform: translateY(-5px);
-        }
-
-        .machine-card h3 {
-            font-size: 1.5em;
-            margin-top: 5px;
-            margin-bottom: 15px; /* Adjusted margin */
-            border-bottom: 1px solid var(--light-grey);
-            padding-bottom: 10px;
-        }
-
-        .machine-card .details p { 
-            margin: 8px 0;
-            font-size: 0.95em;
-            color: #555;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px dotted #ccc; /* Added separator */
-            padding-bottom: 5px;
-        }
-        .machine-card .details p strong {
-            color: var(--charcoal-grey);
-            font-weight: 600;
-            margin-left: 5px;
-        }
-
-        .machine-card .details i {
-            color: var(--primary-accent); 
-            margin-right: 10px;
-            font-size: 1.1em;
-        }
-
-        .machine-type-tag {
-            background-color: var(--primary-accent); 
-            color: var(--white);
-            display: inline-block;
-            font-size: 0.8em;
-            font-weight: 700;
-            padding: 4px 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 2px;
-            margin-bottom: 15px;
-        }
-
-        /* Color accents based on machine type (Kept VMC/HMC colors distinct) */
-        .vmc { border-left: 5px solid #ff9900; }
-        .hmc { border-left: 5px solid #00b300; }
-        .turning { border-left: 5px solid #cc0000; }
-        .conventional { border-left: 5px solid #999999; }
-
-        /* VMC Visual Header Styling */
-        #vmc-visual-header {
-            background: url('https://kentcnc.com/wp-content/uploads/2018/06/Kent-CNC-Horizontal-Machining-Center-2.jpg') no-repeat center center/cover; 
-            height: 350px; 
-            margin: 0 0 40px 0; 
-            display: flex;
-            align-items: flex-end;
-            padding: 20px;
-            position: relative;
-            color: white;
-            font-weight: 700;
-            font-size: 1.2em;
-            border-radius: 5px;
-            text-align: center; 
-        }
-        #vmc-visual-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5); 
-            z-index: 0;
-            border-radius: 5px;
-        }
-        #vmc-visual-header p {
-            position: relative;
-            z-index: 1;
-            margin: 0 auto; 
-            font-size: 2.2em; 
-            font-weight: 700; 
-            text-shadow: 1px 1px 3px #000;
-            text-transform: uppercase; /* CAPITALIZED */
-        }
-        
-        /* Quality Visual Header Styling */
-        #quality-visual-header {
-            /* Now stretches full width */
-            background: url('https://www.renishaw.com/media/img/gen/f90e88bc564b450481f807256378b4c0.jpg') no-repeat center center/cover; 
-            height: 350px; 
-            margin: 0 0 40px 0; /* MAINTAINING GAP */
-            display: flex;
-            align-items: flex-end;
-            padding: 20px 5%; 
-            position: relative;
-            color: white;
-            font-weight: 700;
-            font-size: 1.2em;
-            text-align: center; 
-        }
-        #quality-visual-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6); 
-            z-index: 0;
-        }
-        #quality-visual-header p {
-            position: relative;
-            z-index: 1;
-            margin: 0 auto; 
-            font-size: 2.2em; /* SET FONT SIZE */
-            font-weight: 700; /* SET BOLDNESS */
-            text-shadow: 0 0 5px #000;
-            max-width: 1200px; 
-            width: 100%;
-            text-align: center; 
-            text-transform: uppercase; /* CAPITALIZED */
-        }
-
-        /* Services Visual Header Styling */
-        #services-visual-header {
-            background: url('https://media.istockphoto.com/id/1299310131/photo/powder-coating-process-of-metal-products.jpg?s=612x612&w=0&k=20&c=hzNbOFipPc_kxUExIs5CQElAWocj--ky9tR7Y03jlqs=') no-repeat center center/cover;
-            height: 350px; 
-            margin: 0 0 40px 0; 
-            display: flex;
-            align-items: flex-end;
-            padding: 20px;
-            position: relative;
-            color: white;
-            font-weight: 700;
-            font-size: 1.2em;
-            border-radius: 5px;
-            text-align: center; 
-        }
-        #services-visual-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(128, 0, 0, 0.4); 
-            z-index: 0;
-            border-radius: 5px;
-        }
-        #services-visual-header p {
-            position: relative;
-            z-index: 1;
-            margin: 0 auto; 
-            font-size: 2.2em; /* SET FONT SIZE */
-            font-weight: 700; /* SET BOLDNESS */
-            text-shadow: 0 0 5px #000;
-            text-transform: uppercase; /* CAPITALIZED */
-        }
-        
-        /* Career Visual Header Styling */
-        #career-visual-header {
-            /* Now stretches full width */
-            background: url('https://www.thepowerscompany.com/wp-content/uploads/2020/12/people-and-gears-working-1024x576.webp') no-repeat center center/cover;
-            height: 350px; 
-            margin: 0 0 40px 0; /* MAINTAINING GAP */
-            display: flex;
-            align-items: flex-end; /* Align content to the bottom */
-            justify-content: center; 
-            padding: 0 5%; 
-            position: relative;
-            text-align: center; 
-        }
-        #career-visual-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5); 
-            z-index: 0;
-        }
-        #career-visual-header p.header-text { /* Targeting the new p element */
-            position: relative;
-            z-index: 1;
-            color: var(--white);
-            font-size: 2.2em; /* SET FONT SIZE */
-            font-weight: 700; /* SET BOLDNESS */
-            text-shadow: 1px 1px 5px #000;
-            margin: 0 auto 20px auto; 
-            padding-top: 0;
-            max-width: 1200px;
-            width: 100%;
-            text-transform: uppercase; /* CAPITALIZED */
-        }
-
-
-        /* Value-Added Services CSS */
-        .service-table-container {
-            display: flex;
-            gap: 30px;
+            gap: 40px;
             margin-top: 30px;
         }
-        .service-column {
-            flex: 1;
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            background-color: var(--white);
-        }
-        .service-column h3 {
-            color: var(--charcoal-grey);
-            border-bottom: 2px solid var(--primary-accent);
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
-        .service-column h3 i {
-            color: var(--primary-accent);
-        }
-        .service-column h3[style*="border-bottom-color: green"] i {
-             color: green; 
-        }
-        .service-column h3[style*="border-bottom-color: orange"] i {
-             color: orange; 
-        }
-        
-        /* Career Form Styling Refinements */
-        #career-form-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 30px;
-            background-color: var(--white);
-            border: 1px solid var(--border-color);
-            border-radius: 5px; /* Added slight rounding */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Added slight shadow */
-        }
-        #career-form-container label {
-            display: block;
-            margin-top: 20px; 
-            font-weight: 700;
-            margin-bottom: 8px; 
-            border-bottom: 1px dashed var(--light-grey);
-            padding-bottom: 5px;
-        }
-        #career-form-container input[type="text"],
-        #career-form-container input[type="email"],
-        #career-form-container input[type="tel"],
-        #career-form-container textarea,
-        #career-form-container input[type="file"] {
-            width: 100%;
-            padding: 12px; 
-            border: 1px solid #aaa; 
-            box-sizing: border-box;
-            border-radius: 3px;
-        }
-        /* Job Card Specific Styles */
-        .job-card {
-            background-color: var(--white);
-            border: 1px solid var(--border-color);
-            padding: 25px;
-            transition: box-shadow var(--transition-speed);
-            border-top: 5px solid var(--primary-accent); /* MAROON accent */
-            text-align: left;
-            border-radius: 5px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-        }
-        .job-card h4 {
-            color: var(--primary-accent); /* Made job title maroon */
-            font-size: 1.4em;
-            margin-top: 0;
-            margin-bottom: 5px;
-            border-bottom: 1px dashed var(--light-grey);
-            padding-bottom: 10px;
-        }
-        .job-card .location {
-            color: #555;
-            font-size: 0.9em;
+
+        .job-section h4 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 8px;
             margin-bottom: 15px;
-            font-weight: 500;
+            font-size: 1.1rem;
         }
-        .job-card .description {
-            font-size: 0.9em;
-            margin-bottom: 20px;
-        }
-        /* General application link style enhancement */
-        .general-application-box {
-            background-color: var(--white);
-            border: 1px solid var(--primary-accent);
+
+        /* --- CONTACT STYLING --- */
+        .contact-box {
             padding: 30px;
-            border-radius: 5px;
-            text-align: center;
-            margin-top: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            height: 100%;
         }
-        .general-application-box p {
-            margin-bottom: 20px;
-        }
-        .general-application-box a.btn-secondary {
-            text-transform: uppercase;
-        }
-        
-        /* Footer */
+        .contact-box h3 { margin-bottom: 1rem; color: var(--primary); }
+        .contact-detail { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-weight: 500; }
+        .contact-detail i { color: var(--primary); width: 20px; text-align: center; }
+
+        /* --- FOOTER --- */
         footer {
-            background-color: var(--charcoal-grey);
-            color: var(--light-grey);
-            padding: 20px 0;
-            font-size: 0.9em;
+            background: #111;
+            color: #9ca3af;
+            padding: 60px 0;
+            text-align: center;
+            border-top: 8px solid var(--primary);
         }
 
-        footer a {
-            color: var(--light-grey);
-            text-decoration: none;
-            transition: color var(--transition-speed);
-        }
-
-        footer a:hover {
-            color: var(--primary-accent);
-        }
-        
-        /* --- MOBILE RESPONSIVENESS (Max Width 768px) --- */
         @media (max-width: 768px) {
-            .nav-links {
-                /* Allows nav items to wrap on small screens, if needed */
-                flex-wrap: wrap; 
-                justify-content: center;
-                margin-top: 10px;
-            }
-            .nav-links li {
-                margin: 5px 10px; /* Reduced spacing */
-            }
-            #main-header .container {
-                flex-direction: column; /* Stack logo and nav vertically on mobile */
-                text-align: center;
-                width: 95%; /* Take more width on mobile */
-            }
-            
-            /* General column stacking */
-            .flex-row, .three-column-grid, .service-table-container {
-                flex-direction: column !important;
-                gap: 20px;
-                /* FIX: Ensure children are perfectly centered horizontally */
-                align-items: center !important; 
-                justify-content: center !important; 
-                width: 100% !important;
-            }
-
-            .container {
-                width: 92% !important; /* Standardized container width for mobile */
-                padding-left: 0;
-                padding-right: 0;
-            }
-
-            /* Fix heading and hr centering on mobile */
-            h2, .section-padding h3 {
-                text-align: center !important;
-            }
-            hr {
-                margin: 20px auto 30px auto !important;
-            }
-
-            /* Centering Note Block on Home Page */
-            .note-block {
-                width: 100% !important;
-                max-width: 100% !important;
-                margin-left: auto !important;
-                margin-right: auto !important;
-            }
-
-            /* Capability cards, Metrology cards, and Service columns */
-            .capability-card, .metrology-card, .service-column, .location-box, .general-application-box, .job-card {
-                width: 100% !important; 
-                max-width: 100% !important;
-                margin-left: 0 !important; 
-                margin-right: 0 !important;
-                text-align: center !important; 
-            }
-
-            /* List alignment within cards: Center the list block, but keep text left-aligned */
-            .served-list, .service-column ul, .job-card p, .machine-card .details p {
-                text-align: left !important;
-                display: block !important;
-                width: fit-content;
-                margin-left: auto !important;
-                margin-right: auto !important;
-                padding-left: 25px; /* Ensures dots/icons have room */
-            }
-
-            /* SPECIFIC FIX: Precision Measuring Instruments list only on mobile */
-            .metrology-list-wrapper {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important; /* Centers the whole block */
-                width: 100% !important;
-            }
-            .metrology-list-wrapper p {
-                text-align: left !important;
-                display: flex !important; /* Changed from block to flex to keep icon in front */
-                align-items: flex-start !important;
-                width: auto !important;
-                min-width: 240px; /* Forces a consistent start point for text */
-                margin-left: auto !important;
-                margin-right: auto !important;
-                padding-left: 0 !important; /* Reset padding since block is centered */
-                margin-bottom: 12px !important; /* Vertical spacing for list items */
-            }
-            
-            .metrology-list-wrapper p i {
-                margin-right: 12px !important;
-                margin-top: 4px !important; /* Align arrow with top of text line */
-                flex-shrink: 0 !important;
-            }
-
-            /* Specific centering for lone paragraphs in Renishaw and Commitment cards */
-            #quality .metrology-card:not(:first-of-type) p {
-                padding-left: 0 !important;
-                text-align: center !important;
-                width: 100%;
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-            }
-
-            /* Machinery grid adjustment */
-            .machine-grid {
-                grid-template-columns: 1fr !important; /* Force single column */
-                gap: 20px;
-                width: 100% !important;
-                justify-items: center; /* Center items in grid */
-            }
-
-            .machine-card {
-                width: 100% !important;
-                max-width: 100% !important;
-                border-left: 5px solid var(--primary-accent) !important; /* Ensure uniform border on mobile */
-            }
-
-            .section-padding {
-                padding: 40px 0; /* Reduced padding on sections */
-            }
-            
-            #hero h1 {
-                font-size: 2.2em; /* Smaller hero text for phone */
-            }
-            
-            #hero {
-                min-height: 350px;
-            }
-
-            .col-half {
-                width: 100% !important;
-                margin-bottom: 20px;
-                text-align: center;
-            }
-            
-            /* Fixing Visual Banner Text Size for Mobile */
-            .visual-header p, .visual-header p.header-text {
-                font-size: 1.5em !important;
-            }
+            .nav-links { display: none; }
+            .grid-3 { grid-template-columns: 1fr; }
+            .job-card-content { padding: 25px; }
+            .section-padding { padding: 50px 0; }
+            h2 { font-size: 1.75rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header & Navigation Bar -->
     <header id="main-header">
-        <nav class="container">
-            <!-- LOGO: OFFICIAL IMAGE -->
-            <div class="logo-text">
+        <div class="container">
+            <a href="#" data-page="home">
                 <img src="logo2.png" alt="Kaptron Logo" class="logo-img">
-            </div>
+            </a>
             
             <ul class="nav-links">
-                <li><a href="#home" data-page="home">Home</a></li>
-                <li><a href="#quality" data-page="quality">Quality</a></li> 
-                <li><a href="#machinery" data-page="machinery">Machinery</a></li>
-                <li><a href="#services" data-page="services">Value-Added Services</a></li>
-                <li><a href="#career" data-page="career">Career</a></li>
-                <li><a href="#contact" data-page="contact" class="cta-link">Contact Us</a></li>
+                <li><a href="#" data-page="home">Home</a></li>
+                <li><a href="#" data-page="quality">Quality</a></li> 
+                <li><a href="#" data-page="machinery">Machinery</a></li>
+                <li><a href="#" data-page="services">Services</a></li>
+                <li><a href="#" data-page="career">Career</a></li>
+                <li><a href="#" data-page="contact" class="cta-btn">Contact Us</a></li>
             </ul>
-        </nav>
+        </div>
     </header>
 
-    <!-- CONTENT WRAPPER -->
     <main>
     
-    <!-- 1. HOME PAGE CONTENT -->
-    <div id="home" class="content-section active">
-        <!-- Hero Section (GIF Background) -->
-        <section id="hero" class="industrial-bg">
-            
-            <div class="container text-center">
-                <!-- UPDATED SLOGAN -->
-                <h1>PRECISION IN EVERY CUT. EXCELLENCE IN EVERY PART.</h1>
-            </div>
-        </section>
-
-        <!-- About Us / Company Profile -->
-        <section id="about" class="section-padding">
+    <!-- 1. HOME -->
+    <section id="home" class="content-section active">
+        <div id="hero">
             <div class="container">
-                <h2><i class="fa-solid fa-industry"></i> Kaptron: High-Precision Manufacturing Since 2009</h2>
-                <hr>
-                <p class="lead">Founded in 2009, Kaptron Plastics & Metals has established itself as a <strong>reliable partner for high-precision manufacturing</strong>. Located in the industrial hub of Punjab, India, we specialize in delivering export-quality mechanical components to global markets.</p>
-
+                <h1>Precision in every cut.<br>Excellence in every part.</h1>
             </div>
-        </section>
+        </div>
 
-        <!-- Machining Capabilities (EXPANDED CONTENT) -->
-        <section id="capabilities" class="section-padding bg-light-grey">
-            <div class="container">
-                <div style="text-align:center;">
-                    <h2><i class="fa-solid fa-tools"></i> Core Machining Expertise</h2>
-                    <hr style="margin-left:auto; margin-right:auto;">
-                </div>
-                
-                <!-- MACHINING CAPABILITIES -->
-                <div class="three-column-grid">
-                    <div class="capability-card">
-                        <i class="fa-solid fa-screwdriver-wrench"></i> 
-                        <h3>CNC Milling</h3>
-                        <p>Advanced 3-axis and 4-axis machining for complex geometries and <strong>tight tolerances</strong>.</p>
-                    </div>
-                    <div class="capability-card">
-                        <i class="fa-solid fa-redo-alt"></i>
-                        <h3>CNC Turning</h3>
-                        <p>Precision turning for cylindrical components, ensuring superior surface finish and concentricity.</p>
-                    </div>
-                    <div class="capability-card">
-                        <i class="fa-solid fa-bolt"></i>
-                        <h3>EDM Services</h3>
-                        <p>In-house Die-sinking EDM for intricate molds and cavities. Wire EDM managed through certified partners.</p>
-                    </div>
-                </div>
-
-                <!-- NEW MOULD/TOOLING SPECIALIZATIONS -->
-                <div class="three-column-grid" style="margin-top: 30px;">
-                     <div class="capability-card">
-                        <i class="fa-solid fa-layer-group"></i> 
-                        <h3>Die & Mould Manufacturing</h3>
-                        <p>Design and manufacturing of high-precision plastic injection moulds, die-casting dies, and custom tooling for a wide range of industries.</p>
-                    </div>
-                    <div class="capability-card">
-                        <i class="fa-solid fa-hammer"></i>
-                        <h3>Pressure Die Casting Tooling</h3>
-                        <p>End-to-end development of pressure die casting moulds, including tool design, machining, EDM, fitting, and validation.</p>
-                    </div>
-                    <div class="capability-card">
-                        <i class="fa-solid fa-flask-vial"></i>
-                        <h3>Injection Molding & Materials</h3>
-                        <p>Production-ready injection moulding support, including mould trials, polymer selection, and supply of moulded components.</p>
-                    </div>
-                </div>
-
-                <!-- STYLED NOTE BLOCK FOR HOME PAGE -->
-                <blockquote class="note-block" style="text-align: center; margin: 40px auto 0 auto; max-width: 700px; border-left: 5px solid var(--primary-accent); padding: 15px; background: var(--white); box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);">
-                    We handle both ferrous and non-ferrous metals with equal expertise.
-                </blockquote>
-            </div>
-        </section>
-
-        <!-- Industries and Materials Served (EXPANDED CONTENT) -->
-        <section id="served" class="section-padding">
-            <div class="container">
-                <div class="flex-row">
-                    <div class="col-half">
-                        <h2><i class="fa-solid fa-flask"></i> Materials We Master</h2>
-                        <hr>
-                        <ul class="served-list">
-                            <li><strong>Standard Metals:</strong> Aluminium Alloys, Mild Steel, Brass, Copper.</li>
-                            <li><strong>Hardened Metals:</strong> Stainless Steel (304, 316), Tool Steel (D2, P20, H13 etc.).</li>
-                            <li><strong>Cast iron components:</strong> Machining and finishing solutions for gray cast iron and ductile iron components.</li>
-                            <li><strong>Engineering polymers:</strong> Delrin, Nylon, Peek, ABS, Polycarbonate, and other industrial polymers.</li>
-                        </ul>
-                    </div>
-                    <div class="col-half">
-                        <h2><i class="fa-solid fa-globe-asia"></i> Industries Served</h2>
-                        <hr>
-                        <ul class="served-list">
-                            <li><i class="fa-solid fa-heartbeat"></i> <strong>Medical Devices:</strong> High-precision components for surgical microscopes and medical instrumentation.</li>
-                            <li><i class="fa-solid fa-tractor"></i> <strong>Agricultural Machinery:</strong> Durable parts for vegetable processing equipment and agricultural machinery.</li>
-                            <li><i class="fa-solid fa-car-side"></i> <strong>Automotive & Tooling:</strong> Tooling, die casting dies, injection moulds, and precision-machined components for automotive suppliers.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- 2. QUALITY PAGE CONTENT -->
-    <!-- Removed .container wrap from section to allow header image full width -->
-    <div id="quality" class="content-section">
-        <section class="section-padding">
-            <!-- NEW QUALITY VISUAL HEADER (Full Width) -->
-            <div id="quality-visual-header">
-                <p>RIGOROUS QUALITY CONTROL AND METROLOGY</p>
+        <div class="container section-padding">
+            <div style="text-align:center; max-width: 800px; margin: 0 auto 60px;">
+                <h2>Core Machining Expertise</h2>
+                <hr class="accent" style="margin-left:auto; margin-right:auto;">
             </div>
 
-            <!-- Content needs to be wrapped in container -->
-            <div class="container">
-                <p class="lead">Quality is our foundation. We maintain a <strong>rigorous quality control process</strong> throughout the manufacturing cycle to ensure every component meets the exacting standards of our global clientele.</p>
-
-                <div style="text-align:center; margin: 40px 0 20px 0;">
-                    <h3>Calibrated Metrology Instruments</h3>
+            <div class="grid-3">
+                <div class="card">
+                    <i class="fa-solid fa-microchip"></i>
+                    <h3>CNC Milling</h3>
+                    <p>Advanced 3-axis and 4-axis machining for complex geometries and rigorous tolerances.</p>
                 </div>
-                
-                <div class="three-column-grid">
-                    <div class="metrology-card">
-                        <i class="fa-solid fa-ruler-combined"></i>
-                        <!-- HEADING CORRECTION -->
-                        <h3>Precision Measuring Instruments</h3> 
-                        <!-- Wrapper to handle mobile alignment specifically -->
-                        <div class="metrology-list-wrapper">
-                            <p><i class="fa-solid fa-chevron-right"></i> Digital Calipers</p>
-                            <p><i class="fa-solid fa-chevron-right"></i> Micrometers (Inside/Outside)</p>
-                            <p><i class="fa-solid fa-chevron-right"></i> Dial Gauges</p>
-                            <p><i class="fa-solid fa-chevron-right"></i> Height Gauges</p>
-                            <p><i class="fa-solid fa-chevron-right"></i> Go/No-Go Gauges</p>
-                        </div>
-                    </div>
-                    <div class="metrology-card">
-                        <i class="fa-solid fa-robot"></i>
-                        <!-- HEADING CORRECTION -->
-                        <h3>Renishaw Probing System</h3>
-                        <p id="system-text">For in-process, automated measurement and zero-defect production checks.</p>
-                    </div>
-                    <div class="metrology-card">
-                        <i class="fa-solid fa-certificate"></i>
-                        <!-- HEADING CORRECTION -->
-                        <h3>Tolerance Commitment</h3>
-                        <!-- Content refined to ensure wrapping fits better -->
-                        <p id="commitment-text">All dimensions, finishes, and tolerances are met strictly as per customer drawings and specifications.</p>
-                    </div>
+                <div class="card">
+                    <i class="fa-solid fa-rotate"></i>
+                    <h3>CNC Turning</h3>
+                    <p>Precision turning for cylindrical components, ensuring superior concentricity.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-bolt"></i>
+                    <h3>EDM Services</h3>
+                    <p>In-house Die-sinking EDM for intricate molds and cavities. Wire EDM via certified partners.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-cubes"></i>
+                    <h3>Die & Mould Manufacturing</h3>
+                    <p>High-precision manufacturing of plastic injection moulds, die-casting dies, and custom tooling.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-hammer"></i>
+                    <h3>Pressure Die Casting Tooling</h3>
+                    <p>End-to-end development of moulds including tool design, machining, fitting, and validation.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-flask"></i>
+                    <h3>Injection Molding & Materials</h3>
+                    <p>Production-ready support featuring mould trials, polymer selection, and component supply.</p>
                 </div>
             </div>
-        </section>
-    </div> <!-- /#quality -->
 
-    <!-- 3. MACHINERY PAGE CONTENT -->
-    <div id="machinery" class="content-section bg-light-grey">
-        <section class="section-padding">
-            <!-- VMC Visual Header (Now carries the main page title) -->
-            <div id="vmc-visual-header">
-                <p>MACHINE LIST: OUR PRODUCTION POWERHOUSE</p>
+            <div class="quote-block oswald">
+                "WE HANDLE BOTH FERROUS AND NON-FERROUS METALS WITH EQUAL EXPERTISE."
             </div>
-        
-            <div class="container">
-                <div style="text-align:center;">
-                    <h2><i class="fa-solid fa-microchip"></i> Production Equipment Inventory</h2>
-                    <hr style="margin-left:auto; margin-right:auto;">
-                </div>
-                <p class="lead" style="text-align:center;">Our state-of-the-art facility is equipped with high-performance machines, ensuring high-volume production with consistently high precision.</p>
 
-                <div class="machine-grid">
-                    <!-- CNC VMC Machines (5 VMCs) -->
-                    <div class="machine-card vmc">
-                        <span class="machine-type-tag">CNC VMC</span>
-                        <h3>HAAS VF2, 4th Axis</h3>
-                        <div class="details">
-                            <p>
-                                <i class="fa-solid fa-expand-arrows-alt"></i> Travel (X x Y x Z): 
-                                <strong>760 x 460 x 500 mm</strong>
-                            </p>
-                            <p>
-                                <i class="fa-solid fa-star"></i> Key Feature: 
-                                <strong>Integrated 4th Axis</strong>
-                            </p>
-                        </div>
+            <!-- MATERIALS AND INDUSTRIES -->
+            <div class="grid-3" style="margin-top: 5rem;">
+                <div class="list-container">
+                    <h3>Materials We Master</h3>
+                    <hr class="accent">
+                    <ul class="flex-list">
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i> 
+                            <div>
+                                <span class="list-label">Standard Industrial Metals</span>
+                                <span class="list-desc">Aluminium Alloys, Mild Steel, Brass, and Copper.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i> 
+                            <div>
+                                <span class="list-label">Hardened & Tool Steels</span>
+                                <span class="list-desc">Stainless Steel (304, 316) and Specialized Tool Steel (D2, P20, H13).</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i> 
+                            <div>
+                                <span class="list-label">Cast Iron Components</span>
+                                <span class="list-desc">Comprehensive machining solutions for Gray Cast Iron and Ductile Iron.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-circle-check"></i> 
+                            <div>
+                                <span class="list-label">Engineering Polymers</span>
+                                <span class="list-desc">Delrin, Nylon, PEEK, ABS, Polycarbonate, and other industrial plastics.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="list-container">
+                    <h3>Industries Served</h3>
+                    <hr class="accent">
+                    <ul class="flex-list">
+                        <li>
+                            <i class="fa-solid fa-briefcase-medical"></i> 
+                            <div>
+                                <span class="list-label">Medical Technology</span>
+                                <span class="list-desc">High-precision components for surgical microscopes and medical instrumentation.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-tractor"></i> 
+                            <div>
+                                <span class="list-label">Agricultural Machinery</span>
+                                <span class="list-desc">Durable components for vegetable processing equipment and farming machinery.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-car"></i> 
+                            <div>
+                                <span class="list-label">Automotive & Tooling</span>
+                                <span class="list-desc">Die casting dies, injection moulds, and critical precision automotive components.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. QUALITY -->
+    <section id="quality" class="content-section">
+        <div class="visual-header" style="background-image: url('https://www.renishaw.com/media/img/gen/f90e88bc564b450481f807256378b4c0.jpg');">
+            <h1>Quality Control & Metrology</h1>
+        </div>
+        <div class="container section-padding">
+            <div class="grid-3">
+                <div class="card">
+                    <i class="fa-solid fa-ruler-combined"></i>
+                    <h3>Instruments</h3>
+                    <ul class="flex-list">
+                        <li><i class="fa-solid fa-chevron-right"></i> Digital Calipers</li>
+                        <li><i class="fa-solid fa-chevron-right"></i> Micrometers (Inside/Outside)</li>
+                        <li><i class="fa-solid fa-chevron-right"></i> Dial Gauges</li>
+                        <li><i class="fa-solid fa-chevron-right"></i> Height Gauges</li>
+                        <li><i class="fa-solid fa-chevron-right"></i> Go/No-Go Gauges</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-robot"></i>
+                    <h3>Renishaw Probing</h3>
+                    <p style="margin-top: 1rem;">Automated in-process measurement systems for zero-defect production runs.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-certificate"></i>
+                    <h3>Commitment</h3>
+                    <p style="margin-top: 1rem;">Strict adherence to international standards and customer-specific specifications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. MACHINERY -->
+    <section id="machinery" class="content-section">
+        <div class="visual-header" style="background-image: url('https://kentcnc.com/wp-content/uploads/2018/06/Kent-CNC-Horizontal-Machining-Center-2.jpg');">
+            <h1>Production Powerhouse</h1>
+        </div>
+        <div class="container section-padding">
+            <div style="text-align:center; max-width: 800px; margin: 0 auto 50px;">
+                <h2>Production Equipment Inventory</h2>
+                <hr class="accent" style="margin-left:auto; margin-right:auto;">
+                <p>Our facility is equipped with high-performance machines ensuring high-volume production with consistently high precision.</p>
+            </div>
+
+            <div class="grid-3">
+                <!-- VMC -->
+                <div class="machine-card">
+                    <div class="machine-category">CNC VMC</div>
+                    <h3>HAAS VF2, 4th Axis</h3>
+                    <div class="spec-item"><span class="spec-label">Travel X &times; Y &times; Z</span> <span class="spec-value">760 &times; 460 &times; 500 mm</span></div>
+                    <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">Integrated 4th Axis</span></div>
+                </div>
+                <div class="machine-card">
+                    <div class="machine-category">CNC VMC</div>
+                    <h3>Mac Power PRO 1000, 4th Axis</h3>
+                    <div class="spec-item"><span class="spec-label">Travel X &times; Y &times; Z</span> <span class="spec-value">1010 &times; 610 &times; 600 mm</span></div>
+                    <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">Large Capacity, 4th Axis</span></div>
+                </div>
+                <div class="machine-card">
+                    <div class="machine-category">CNC VMC</div>
+                    <h3>Excel KIWA 510</h3>
+                    <div class="spec-item"><span class="spec-label">Travel X &times; Y &times; Z</span> <span class="spec-value">680 &times; 430 &times; 450 mm</span></div>
+                    <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">Standard VMC</span></div>
+                </div>
+                <div class="machine-card">
+                    <div class="machine-category">CNC VMC</div>
+                    <h3>Yantrang APC 1000</h3>
+                    <div class="spec-item"><span class="spec-label">Travel X &times; Y &times; Z</span> <span class="spec-value">1010 &times; 610 &times; 660 mm</span></div>
+                    <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">Automatic Pallet Changer</span></div>
+                </div>
+                <div class="machine-card">
+                    <div class="machine-category">CNC VMC</div>
+                    <h3>Kitamura MY CENTRE 3Xi</h3>
+                    <div class="spec-item"><span class="spec-label">Travel X &times; Y &times; Z</span> <span class="spec-value">762 &times; 450 &times; 460 mm</span></div>
+                    <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">Pallet Changer</span></div>
+                </div>
+                <!-- HMC -->
+                <div class="machine-card">
+                    <div class="machine-category">CNC HMC</div>
+                    <h3>Kiwa KNH 426x</h3>
+                    <div class="spec-item"><span class="spec-label">Travel X &times; Y &times; Z</span> <span class="spec-value">600 &times; 600 &times; 600 mm</span></div>
+                    <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">High-Volume 6-Pallet Pool</span></div>
+                </div>
+                <!-- Turning -->
+                <div class="machine-card">
+                    <div class="machine-category">CNC TurningCenter</div>
+                    <h3>Yantrang MICRO TURN</h3>
+                    <div class="spec-item"><span class="spec-label">Model</span> <span class="spec-value">MICRO TURN</span></div>
+                    <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">High-Precision Turning</span></div>
+                </div>
+                <div class="machine-card">
+                    <div class="machine-category">CNC TurningCenter</div>
+                    <h3>Nakamura Tome SC 300</h3>
+                    <div class="spec-item"><span class="spec-label">Model</span> <span class="spec-value">SC 300</span></div>
+                    <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">High-Performance Turning</span></div>
+                </div>
+                <div class="machine-card">
+                    <div class="machine-category">CNC TurningCenter</div>
+                    <h3>JOHNFORD ST 40</h3>
+                    <div class="spec-item"><span class="spec-label">Model</span> <span class="spec-value">ST 40</span></div>
+                    <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">Heavy-Duty Turning</span></div>
+                </div>
+                <!-- EDM -->
+                <div class="machine-card">
+                    <div class="machine-category">EDM</div>
+                    <h3>Sparkonix Die-Sinking</h3>
+                    <div class="spec-item"><span class="spec-label">Process</span> <span class="spec-value">Die-Sinking EDM</span></div>
+                    <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">Intricate Molds and Cavities</span></div>
+                </div>
+                <!-- Conventional -->
+                <div class="machine-card">
+                    <div class="machine-category">Conventional Lathe</div>
+                    <h3>Kirloskar</h3>
+                    <div class="spec-item"><span class="spec-label">Model</span> <span class="spec-value">Kirloskar</span></div>
+                    <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">General Purpose Turning</span></div>
+                </div>
+                <div class="machine-card">
+                    <div class="machine-category">Big Bore Lathe</div>
+                    <h3>Aashu</h3>
+                    <div class="spec-item"><span class="spec-label">Model</span> <span class="spec-value">Aashu</span></div>
+                    <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">Large Diameter Capacity</span></div>
+                </div>
+                <div class="machine-card">
+                    <div class="machine-category">Surface Grinder</div>
+                    <h3>Churchil</h3>
+                    <div class="spec-item"><span class="spec-label">Model</span> <span class="spec-value">Churchil</span></div>
+                    <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">Precision Flat Finishing</span></div>
+                </div>
+                <div class="machine-card">
+                    <div class="machine-category">Centreless Grinder</div>
+                    <h3>Stanko</h3>
+                    <div class="spec-item"><span class="spec-label">Model</span> <span class="spec-value">Stanko</span></div>
+                    <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">High-Volume Cylindrical Grinding</span></div>
+                </div>
+                <div class="machine-card">
+                    <div class="machine-category">Conventional Milling</div>
+                    <h3>Elliot</h3>
+                    <div class="spec-item"><span class="spec-label">Model</span> <span class="spec-value">Elliot</span></div>
+                    <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">Tooling and Setup Support</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SERVICES -->
+    <section id="services" class="content-section">
+        <div class="visual-header" style="background-image: url('https://media.istockphoto.com/id/1299310131/photo/powder-coating-process-of-metal-products.jpg?s=612x612&w=0&k=20&c=hzNbOFipPc_kxUExIs5CQElAWocj--ky9tR7Y03jlqs=');">
+            <h1>Value-Added Services</h1>
+        </div>
+        <div class="container section-padding">
+            <p style="text-align:center; max-width: 800px; margin: 0 auto 40px; font-size: 1.1rem;">We offer a complete manufacturing solution, managing all post-machining processes to deliver a product ready for assembly.</p>
+            <div class="grid-3">
+                <div class="card">
+                    <i class="fa-solid fa-paint-roller"></i>
+                    <h3>In-House Finishing</h3>
+                    <ul class="flex-list" style="max-width: 200px; margin: 1rem auto;">
+                        <li><i class="fa-solid fa-check"></i> Sandblasting</li>
+                        <li><i class="fa-solid fa-check"></i> Powder Coating</li>
+                        <li><i class="fa-solid fa-check"></i> Paint Shop</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-handshake"></i>
+                    <h3>Certified Partner Network</h3>
+                    <ul class="flex-list" style="max-width: 200px; margin: 1rem auto;">
+                        <li><i class="fa-solid fa-check"></i> Heat Treatment</li>
+                        <li><i class="fa-solid fa-check"></i> Anodizing</li>
+                        <li><i class="fa-solid fa-check"></i> Nickel Plating</li>
+                        <li><i class="fa-solid fa-check"></i> Laser Marking</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="quote-block">
+                <strong>Quality Assurance for Subcontracting:</strong> We take full responsibility for the quality of all subcontracted processes, managing our certified partner network to ensure final product standards are met.
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. CAREER -->
+    <section id="career" class="content-section">
+        <div class="visual-header" style="background-image: url('https://www.thepowerscompany.com/wp-content/uploads/2020/12/people-and-gears-working-1024x576.webp');">
+            <h1>Join the Kaptron Team</h1>
+        </div>
+        <div class="container section-padding">
+            <div class="job-card-hero">
+                <div class="job-card-header">
+                    <h3>Job Opening: Production Engineer</h3>
+                    <div class="job-meta">
+                        <i class="fa-solid fa-location-dot"></i> Derabassi, Punjab &nbsp; | &nbsp; 
+                        <i class="fa-solid fa-building"></i> Kaptron Plastics & Metals
                     </div>
-                    <div class="machine-card vmc">
-                        <span class="machine-type-tag">CNC VMC</span>
-                        <h3>Mac Power PRO 1000, 4th Axis</h3>
-                        <div class="details">
-                            <p>
-                                <i class="fa-solid fa-expand-arrows-alt"></i> Travel (X x Y x Z): 
-                                <strong>1010 x 610 x 600 mm</strong>
-                            </p>
-                            <p>
-                                <i class="fa-solid fa-star"></i> Key Feature: 
-                                <strong>Large Capacity, 4th Axis</strong>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="machine-card vmc">
-                        <span class="machine-type-tag">CNC VMC</span>
-                        <h3>Excel KIWA 510</h3>
-                        <div class="details">
-                            <p>
-                                <i class="fa-solid fa-expand-arrows-alt"></i> Travel (X x Y x Z): 
-                                <strong>680 x 430 x 450 mm</strong>
-                            </p>
-                            <p>
-                                <i class="fa-solid fa-star"></i> Key Feature: 
-                                <strong>Standard VMC</strong>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="machine-card vmc">
-                        <span class="machine-type-tag">CNC VMC</span >
-                        <h3>Yantrang APC 1000</h3>
-                        <div class="details">
-                             <p>
-                                <i class="fa-solid fa-expand-arrows-alt"></i> Travel (X x Y x Z): 
-                                <strong>1010 x 610 x 660 mm</strong>
-                            </p>
-                            <p>
-                                <i class="fa-solid fa-star"></i> Key Feature: 
-                                <strong>Automatic Pallet Changer</strong>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="machine-card vmc">
-                        <span class="machine-type-tag">CNC VMC</span>
-                        <h3>Kitamura MY CENTRE 3Xi</h3>
-                        <div class="details">
-                            <p>
-                                <i class="fa-solid fa-expand-arrows-alt"></i> Travel (X x Y x Z): 
-                                <strong>762 x 450 x 460 mm</strong>
-                            </p>
-                            <p>
-                                <i class="fa-solid fa-star"></i> Key Feature: 
-                                <strong>Pallet Changer</strong>
-                            </p>
-                        </div>
-                    </div>
+                </div>
+                <div class="job-card-content">
+                    <p style="font-size: 1.1rem; margin-bottom: 2rem;">We are looking for a fresher or experienced CNC professional who can manage production on Turning Centres, VMC, and HMC machines along with quality checks and basic troubleshooting.</p>
                     
-                    <!-- CNC HMC Machine (1 HMC) -->
-                    <div class="machine-card hmc">
-                        <span class="machine-type-tag">CNC HMC</span>
-                        <h3>Kiwa KNH 426x</h3>
-                        <div class="details">
-                            <p>
-                                <i class="fa-solid fa-expand-arrows-alt"></i> Travel (X x Y x Z): 
-                                <strong>600 x 600 x 600 mm</strong>
-                            </p>
-                            <p>
-                                <i class="fa-solid fa-star"></i> Key Feature: 
-                                <strong>High-Volume 6-Pallet Pool</strong>
-                            </p>
+                    <div class="job-grid">
+                        <div class="job-section">
+                            <h4>Responsibilities</h4>
+                            <ul class="flex-list">
+                                <li><i class="fa-solid fa-arrow-right"></i> Operating and supervising CNC Turning Centres, VMC & HMC.</li>
+                                <li><i class="fa-solid fa-arrow-right"></i> Managing daily production planning and targets.</li>
+                                <li><i class="fa-solid fa-arrow-right"></i> Performing quality checks (Vernier, Micrometer, etc.).</li>
+                                <li><i class="fa-solid fa-arrow-right"></i> Troubleshooting (tool wear, offset correction, alarms).</li>
+                            </ul>
+                        </div>
+                        <div class="job-section">
+                            <h4>Requirements</h4>
+                            <ul class="flex-list">
+                                <li><i class="fa-solid fa-check"></i> ITI / Diploma / B.Tech in Mechanical field.</li>
+                                <li><i class="fa-solid fa-check"></i> Basic knowledge of CNC programming & offsets.</li>
+                                <li><i class="fa-solid fa-check"></i> Ability to handle precision measuring instruments.</li>
+                                <li><i class="fa-solid fa-check"></i> Responsible and disciplined attitude.</li>
+                            </ul>
                         </div>
                     </div>
 
-                    <!-- CNC Turning Centers (3) -->
-                    <div class="machine-card turning">
-                        <span class="machine-type-tag">CNC Turning</span>
-                        <h3>Yantrang MICRO TURN</h3>
-                        <div class="details">
-                             <p>
-                                <i class="fa-solid fa-gear"></i> Model: 
-                                <strong>MICRO TURN</strong>
-                            </p>
-                            <p>
-                                <i class="fa-solid fa-star"></i> Key Feature: 
-                                <strong>High-Precision Turning</strong>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="machine-card turning">
-                        <span class="machine-type-tag">CNC Turning</span>
-                        <h3>Nakamura Tome SC 300</h3>
-                        <div class="details">
-                            <p>
-                                <i class="fa-solid fa-gear"></i> Model: 
-                                <strong>SC 300</strong>
-                            </p>
-                            <p>
-                                <i class="fa-solid fa-star"></i> Key Feature: 
-                                <strong>High-Performance Turning</strong>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="machine-card turning">
-                        <span class="machine-type-tag">CNC Turning</span>
-                        <h3>JOHNFORD ST 40</h3>
-                        <div class="details">
-                            <p>
-                                <i class="fa-solid fa-gear"></i> Model: 
-                                <strong>ST 40</strong>
-                            </p>
-                            <p>
-                                <i class="fa-solid fa-star"></i> Key Feature: 
-                                <strong>Heavy-Duty Turning</strong>
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- EDM -->
-                    <div class="machine-card conventional">
-                        <span class="machine-type-tag">EDM</span>
-                        <h3>Sparkonix Die-Sinking</h3>
-                        <div class="details">
-                            <p>
-                                <i class="fa-solid fa-bolt"></i> Process: 
-                                <strong>Die-Sinking EDM</strong>
-                            </p>
-                            <p>
-                                <i class="fa-solid fa-star"></i> Key Feature: 
-                                <strong>Intricate Molds and Cavities</strong>
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <!-- Kirloskar Conventional Lathe -->
-                    <div class="machine-card conventional">
-                        <span class="machine-type-tag">Conventional Lathe</span>
-                        <h3>Kirloskar</h3>
-                        <div class="details">
-                            <p>
-                                <i class="fa-solid fa-gear"></i> Model: 
-                                <strong>Kirloskar</strong>
-                            </p>
-                            <p>
-                                <i class="fa-solid fa-star"></i> Key Feature: 
-                                <strong>General Purpose Turning</strong>
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Aashu Big Bore Lathe -->
-                    <div class="machine-card conventional">
-                        <span class="machine-type-tag">Big Bore Lathe</span>
-                        <h3>Aashu</h3>
-                        <div class="details">
-                            <p>
-                                <i class="fa-solid fa-gear"></i> Model: 
-                                <strong>Aashu</strong>
-                            </p>
-                            <p>
-                                <i class="fa-solid fa-star"></i> Key Feature: 
-                                <strong>Large Diameter Capacity</strong>
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <!-- Churchil Surface Grinder -->
-                    <div class="machine-card conventional">
-                        <span class="machine-type-tag">Surface Grinder</span>
-                        <h3>Churchil</h3>
-                        <div class="details">
-                            <p>
-                                <i class="fa-solid fa-ruler-combined"></i> Model: 
-                                <strong>Churchil</strong>
-                            </p>
-                            <p>
-                                <i class="fa-solid fa-star"></i> Key Feature: 
-                                <strong>Precision Flat Finishing</strong>
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Stanko Centreless Grinder (SEPARATE BOX) -->
-                    <div class="machine-card conventional">
-                        <span class="machine-type-tag">Centreless Grinder</span>
-                        <h3>Stanko</h3>
-                        <div class="details">
-                            <p>
-                                <i class="fa-solid fa-ruler-combined"></i> Model: 
-                                <strong>Stanko</strong>
-                            </p>
-                            <p>
-                                <i class="fa-solid fa-star"></i> Key Feature: 
-                                <strong>High-Volume Cylindrical Grinding</strong>
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Elliot Conventional Milling (SEPARATE BOX) -->
-                    <div class="machine-card conventional">
-                        <span class="machine-type-tag">Conventional Milling</span>
-                        <h3>Elliot</h3>
-                        <div class="details">
-                            <p>
-                                <i class="fa-solid fa-cogs"></i> Model: 
-                                <strong>Elliot</strong>
-                            </p>
-                            <p>
-                                <i class="fa-solid fa-star"></i> Key Feature: 
-                                <strong>Tooling and Setup Support</strong>
-                            </p>
-                        </div>
+                    <div style="text-align: center; margin-top: 40px;">
+                        <p style="margin-bottom: 20px; font-weight: 600;">Interested? Send your CV to our HR team:</p>
+                        <a href="mailto:info@kaptron.in" style="font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none;">info@kaptron.in</a>
                     </div>
                 </div>
             </div>
-        </section>
-    </div> <!-- /#machinery -->
+        </div>
+    </section>
 
-    <!-- 4. VALUE-ADDED SERVICES PAGE CONTENT -->
-    <div id="services" class="content-section">
-        <section class="section-padding">
-            <!-- NEW SERVICES VISUAL HEADER -->
-            <div id="services-visual-header">
-                <p>SURFACE FINISHING AND TREATMENT</p>
+    <!-- 6. CONTACT -->
+    <section id="contact" class="content-section">
+        <div class="container section-padding">
+            <div style="text-align:center; max-width: 800px; margin: 0 auto 50px;">
+                <h2>Get in Touch</h2>
+                <hr class="accent" style="margin: 20px auto 40px auto;">
+                <p>Connect with our team for inquiries, quotes, or coordination. We operate globally with local representation to serve your needs efficiently.</p>
             </div>
             
-            <!-- Content wrapped in container -->
-            <div class="container">
-                <!-- TEXT MOVED HERE (Placed after the visual header) -->
-                <p class="lead" style="margin-top: 30px; text-align:center;">We offer a complete manufacturing solution, managing all post-machining processes to deliver a product ready for assembly.</p>
-
-                <div class="service-table-container">
-                    <div class="service-column">
-                        <h3 style="border-bottom-color: green;"><i class="fa-solid fa-factory"></i> In-House Capabilities</h3>
-                        <ul class="served-list">
-                            <li>Sandblasting</li>
-                            <li>Powder Coating</li>
-                            <li>Paint shop</li>
-                        </ul>
-                    </div>
-
-                    <div class="service-column">
-                        <h3 style="border-bottom-color: orange;"><i class="fa-solid fa-handshake"></i> Certified Partner Network</h3>
-                        <ul class="served-list">
-                            <li>Heat Treatment</li>
-                            <li>Anodizing</li>
-                            <li>Nickel Plating</li>
-                            <li>Laser Marking</li>
-                        </ul>
-                    </div>
+            <div class="grid-3" style="align-items: stretch;">
+                <div class="contact-box">
+                    <h3>Germany / Europe</h3>
+                    <p style="font-weight: 700; margin-bottom: 10px;">Udit Kumar</p>
+                    <div class="contact-detail"><i class="fa-solid fa-envelope"></i> udit.kaptron@gmail.com</div>
+                    <div class="contact-detail"><i class="fa-solid fa-phone"></i> +49 155 6603 7554</div>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 15px;">Local point of contact for seamless communication and real-time support within European time zones.</p>
                 </div>
-
-                <blockquote class="note-block" style="margin-top: 40px; border-left: 5px solid var(--primary-accent); padding: 15px; background: var(--light-grey);">
-                    <strong>Quality Assurance for Subcontracting:</strong> We take full responsibility for the quality of all subcontracted processes, managing our certified partner network to ensure final product standards are met.
-                </blockquote>
-            </div>
-        </section>
-    </div> <!-- /#services -->
-
-    <!-- 5. CAREER PAGE CONTENT -->
-    <!-- Removed .container wrap from section to allow header image full width -->
-    <div id="career" class="content-section bg-light-grey">
-        <section class="section-padding">
-            <!-- CAREER VISUAL HEADER (Full Width) -->
-            <div id="career-visual-header">
-                <p class="header-text">JOIN THE KAPTRON TEAM</p>
-            </div>
-            
-            <!-- Content needs to be wrapped in container -->
-            <div class="container">
-                <div style="text-align:center;">
-                    <h2><i class="fa-solid fa-briefcase"></i> Join the Kaptron Team</h2>
-                    <hr style="margin-left:auto; margin-right:auto;">
-                </div>
-                <p class="lead" style="margin-bottom: 30px; text-align:center;">Kaptron is a place where precision meets passion. Explore our current openings or submit a general application below.</p>
-
-                <h3 style="text-align:center; margin-bottom:20px;">Current Openings</h3>
-                
-                <!-- JOB POSTINGS AREA (Uses machine-grid for responsive columns) -->
-                <div id="job-postings" class="machine-grid"> 
-                    
-                    <!-- Placeholder Job 1 (Active Posting) -->
-                    <div class="job-card">
-                        <h4>CNC Machinist (4-Axis VMC)</h4>
-                        <p class="location"><i class="fa-solid fa-map-marker-alt"></i> Punjab, India</p>
-                        <p class="description">Seeking experienced machinist for high-precision component production on Haas and Mac Power VMCS.</p>
-                        <!-- UPDATED LINK INSTRUCTION -->
-                        <p style="margin-top: 15px; font-weight: bold; font-size: 0.9em; text-align:center;">
-                            <a href="mailto:info@kaptron.in?subject=Application for CNC Machinist" style="color: var(--primary-accent); text-decoration: none;">
-                                Email Your Application
-                            </a>
-                        </p>
+                <div class="contact-box">
+                    <h3>India Headquarters</h3>
+                    <p style="font-weight: 700; margin-bottom: 10px;">Factory & Production Center</p>
+                    <div class="contact-detail"><i class="fa-solid fa-envelope"></i> info@kaptron.in</div>
+                    <div class="contact-detail"><i class="fa-solid fa-phone"></i> +91 9888344696</div>
+                    <div class="contact-detail" style="align-items: flex-start;">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Kaptron Plastics & Metals<br>Bhagwan Pur, Opp. Hansa Industrial Park<br>Industrial Area, Derabassi<br>Punjab 140507, India</span>
                     </div>
-                    
-                    <!-- Placeholder Job 2 (Active Posting) -->
-                    <div class="job-card">
-                        <h4>Quality Assurance Inspector</h4>
-                        <p class="location"><i class="fa-solid fa-map-marker-alt"></i> Punjab, India</p>
-                        <p class="description">Requires experience with digital metrology and reading complex engineering drawings (GD&T knowledge is a plus).</p>
-                        <!-- UPDATED LINK INSTRUCTION -->
-                        <p style="margin-top: 15px; font-weight: bold; font-size: 0.9em; text-align:center;">
-                            <a href="mailto:info@kaptron.in?subject=Application for Quality Assurance Inspector" style="color: var(--primary-accent); text-decoration: none;">
-                                Email Your Application
-                            </a>
-                        </p>
-                    </div>
-                </div>
-                
-                <h3 style="margin-top: 60px; text-align:center;">Submit General Application</h3>
-                
-                <!-- Redesigned General Application Box -->
-                <div class="general-application-box">
-                    <p class="lead" style="font-size: 1.1em; color: var(--charcoal-grey); margin-bottom: 25px;">
-                        If you do not see a current opening that fits your profile, you are welcome to send your complete application (resume, cover letter, and references) directly to our HR team via email.
-                    </p>
-                    
-                    <a href="mailto:info@kaptron.in?subject=Unsolicited General Application" class="btn primary-accent" style="margin-top: 5px; color:white; background:var(--primary-accent); padding:10px 20px; text-decoration:none;">
-                        Email Your Application
-                    </a>
-                    <p style="font-size: 0.85em; color: #888; margin-top: 10px;">(Please attach all documents to the email.)</p>
                 </div>
             </div>
-        </section>
-    </div> <!-- /#career -->
-    
-    <!-- 6. CONTACT US PAGE CONTENT -->
-    <div id="contact" class="content-section">
-        <section class="section-padding">
-            <div class="container">
-                <div style="text-align:center;">
-                    <h2><i class="fa-solid fa-comments"></i> Get in Touch</h2>
-                    <hr style="margin-left:auto; margin-right:auto;">
-                </div>
-                <p class="lead" style="text-align:center;">Connect with our team for inquiries, quotes, or coordination. We operate globally with local representation to serve your needs efficiently.</p>
-                
-                <div class="flex-row" style="margin-top: 40px;">
-                    
-                    <!-- GERMANY / EUROPE COORDINATION -->
-                    <div class="location-box col-half">
-                        <h3><i class="fa-solid fa-map-marker-alt"></i> Germany / Europe Coordination</h3>
-                        <p><strong>Udit Kumar</strong></p>
-                        <p><i class="fa-solid fa-envelope"></i> udit.kaptron@gmail.com</p>
-                        <p><i class="fa-solid fa-phone"></i> +49 155 6603 7554</p>
-                        <p class="mt-4" style="font-size: 0.9em;">(Your local point of contact for seamless communication, quick coordination, and real-time support within European time zones.)</p>
-                    </div>
 
-                    <!-- INDIA HEADQUARTERS & PRODUCTION -->
-                    <div class="location-box col-half">
-                         <h3><i class="fa-solid fa-building"></i> India Headquarters & Production</h3>
-                        <p>Factory & Production Center – Punjab, India</p>
-                        <p><i class="fa-solid fa-envelope"></i> info@kaptron.in</p>
-                        <p><i class="fa-solid fa-phone"></i> +91 9888344696</p>
-                        
-                        <address class="mt-4" style="border-top: 1px dashed var(--border-color); padding-top: 15px;">
-                            <strong>Kaptron Plastics & Metals</strong><br>
-                            Bhagwan Pur, Opp. Hansa Industrial Park<br>
-                            Industrial Area, Tehsil Dera Bassi<br>
-                            Punjab 140507, India
-                        </address>
-                    </div>
-                </div>
-                
-                <div style="text-align: center; padding-top: 40px;">
-                    <h3>Find Our Location</h3>
-                    <p class="lead">
-                        <i class="fa-solid fa-map-marker-alt" style="color: var(--maroon); font-size: 1.5em; margin-right: 10px;"></i>
-                        Click below to view our exact location on Google Maps:
-                    </p>
-                    <a 
-                        href="https://maps.app.goo.gl/ChEaUY3WwnxcZKCk7" 
-                        target="_blank" 
-                        class="btn cta-link" 
-                        style="margin-top: 15px;">
-                        View Map Directions
-                    </a>
-                </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <p style="margin-bottom: 20px; font-weight: 600;">Click below to view our exact location on Google Maps:</p>
+                <a href="https://maps.app.goo.gl/ChEaUY3WwnxcZKCk7" target="_blank" class="cta-btn" style="text-decoration: none;">View Map Directions</a>
             </div>
-        </section>
-    </div> <!-- /#contact -->
+        </div>
+    </section>
+
     </main>
 
-    <!-- Footer -->
     <footer>
-        <div class="container text-center">
-            <p>&copy; <span id="current-year"></span> Kaptron Plastics & Metals. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="#quality" data-page="quality">Quality</a> | 
-                <a href="#machinery" data-page="machinery">Machinery</a> | 
-                <a href="#contact" data-page="contact">Contact</a>
-            </div>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Kaptron Plastics & Metals. All rights reserved.</p>
+            <p style="margin-top: 8px; opacity: 0.7;">ISO 9001:2015 Compliant Production Hub | Punjab, India</p>
         </div>
     </footer>
 
-    <!-- JAVASCRIPT FOR SINGLE-PAGE NAVIGATION -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        const showPage = (pageId) => {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(s => s.classList.remove('active'));
             
-            // Function to display the correct page content
-            const showPage = (pageId) => {
-                // Remove 'active' from all content sections
-                document.querySelectorAll('.content-section').forEach(section => {
-                    section.classList.remove('active');
-                });
-                // Add 'active' to the target section
-                const activeSection = document.getElementById(pageId);
-                if (activeSection) {
-                    activeSection.classList.add('active');
-                    // Optionally scroll to the top of the content area
-                    window.scrollTo(0, 0); 
-                }
-            };
+            const target = document.getElementById(pageId);
+            if (target) {
+                target.classList.add('active');
+                window.scrollTo(0, 0); 
+            }
 
-            // Event listeners for navigation links
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                }
+            });
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('[data-page]').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const pageId = e.currentTarget.getAttribute('data-page');
-                    // Update URL hash without reloading (important for history/refresh)
                     window.location.hash = pageId; 
                     showPage(pageId);
                 });
             });
 
-            // Handle initial load based on URL hash (or default to 'home')
             const initialPage = window.location.hash.substring(1) || 'home';
             showPage(initialPage);
             
-            // Update copyright year
-            document.getElementById('current-year').textContent = new Date().getFullYear();
+            const yearEl = document.getElementById('year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+        });
+
+        window.addEventListener('popstate', () => {
+            const pageId = window.location.hash.substring(1) || 'home';
+            showPage(pageId);
         });
     </script>
 </body>
