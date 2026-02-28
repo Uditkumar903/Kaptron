@@ -61,8 +61,8 @@
             color: var(--text-main);
         }
 
-        h2 { font-size: 2.25rem; margin-bottom: 0.5rem; }
-        .section-padding { padding: 80px 0; }
+        h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); margin-bottom: 0.5rem; }
+        .section-padding { padding: clamp(40px, 8vh, 80px) 0; }
 
         hr.accent {
             border: 0;
@@ -99,7 +99,7 @@
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: center;
         }
 
@@ -107,10 +107,11 @@
             text-decoration: none;
             color: var(--text-main);
             font-weight: 600;
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             text-transform: uppercase;
             transition: var(--transition);
             letter-spacing: 0.5px;
+            white-space: nowrap;
         }
 
         .nav-links a:hover, .nav-links a.active { color: var(--primary); }
@@ -118,11 +119,12 @@
         .cta-btn {
             background-color: var(--primary);
             color: white !important;
-            padding: 10px 24px;
+            padding: 8px 20px;
             border-radius: 4px;
             font-weight: 700;
             box-shadow: 0 4px 12px rgba(128, 0, 0, 0.2);
             text-decoration: none;
+            display: inline-block;
         }
 
         /* --- PAGE SYSTEM --- */
@@ -134,13 +136,13 @@
         .content-section.active { display: block; }
 
         @keyframes slideIn {
-            from { opacity: 0; transform: translateY(15px); }
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         /* --- HERO & BANNERS --- */
         #hero {
-            height: 550px;
+            height: clamp(350px, 60vh, 550px);
             background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyaGRlOHI0dnhneTlzMjJ6dGRyeWdpOWEwYXdsbGZzc2JvcGpkd2RobiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/yMDkNQDR81yLyn2W1Y/giphy.gif');
             background-size: cover;
             background-position: center;
@@ -149,12 +151,13 @@
             justify-content: center;
             text-align: center;
             color: white;
+            padding: 0 20px;
         }
 
-        #hero h1 { color: white; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; }
+        #hero h1 { color: white; font-size: clamp(1.5rem, 5vw, 3.5rem); line-height: 1.1; }
 
         .visual-header {
-            height: 380px;
+            height: clamp(200px, 30vh, 380px);
             background-size: cover;
             background-position: center;
             position: relative;
@@ -175,7 +178,7 @@
             position: relative;
             z-index: 1;
             color: white;
-            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            font-size: clamp(1.25rem, 4vw, 2.75rem);
             padding: 0 1rem;
             text-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
@@ -183,14 +186,14 @@
         /* --- GRIDS & CARDS --- */
         .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
         .card {
             background: var(--surface);
-            padding: 40px;
+            padding: clamp(20px, 5vw, 40px);
             border-radius: 12px;
             border: 1px solid var(--border);
             text-align: center;
@@ -201,13 +204,13 @@
         }
 
         .card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             box-shadow: var(--shadow-md);
             border-color: var(--primary-light);
         }
 
-        .card i { color: var(--primary); font-size: 3rem; margin-bottom: 1.5rem; }
-        .card h3 { font-size: 1.35rem; margin-bottom: 1rem; color: var(--primary); }
+        .card i { color: var(--primary); font-size: 2.5rem; margin-bottom: 1.5rem; }
+        .card h3 { font-size: 1.25rem; margin-bottom: 1rem; color: var(--primary); }
 
         .flex-list {
             list-style: none;
@@ -218,17 +221,17 @@
         .flex-list li {
             display: flex;
             align-items: flex-start;
-            gap: 14px;
+            gap: 12px;
             margin-bottom: 16px;
             font-size: 0.95rem;
             line-height: 1.5;
         }
 
         .flex-list i {
-            font-size: 0.9rem !important;
+            font-size: 0.85rem !important;
             color: var(--primary) !important;
             margin-bottom: 0 !important;
-            margin-top: 5px !important;
+            margin-top: 6px !important;
             flex-shrink: 0;
         }
 
@@ -241,7 +244,7 @@
 
         .list-desc {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.875rem;
         }
 
         .quote-block {
@@ -255,9 +258,10 @@
             color: var(--text-main);
             border-radius: 4px;
             box-shadow: var(--shadow-sm);
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
         }
 
-        /* --- MACHINERY CATALOG STYLE --- */
+        /* --- MACHINERY CATALOG --- */
         .machine-card {
             background: white;
             border-top: 4px solid var(--primary);
@@ -267,30 +271,28 @@
             transition: var(--transition);
         }
 
-        .machine-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
-        
         .machine-category {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--primary);
             font-weight: 800;
             margin-bottom: 8px;
             text-transform: uppercase;
         }
 
-        .machine-card h3 { margin-bottom: 1rem; font-size: 1.25rem; }
+        .machine-card h3 { margin-bottom: 0.75rem; font-size: 1.15rem; }
 
         .spec-item {
             display: flex;
             flex-direction: column;
             padding: 6px 0;
             border-bottom: 1px solid #f1f1f1;
-            font-size: 0.875rem;
+            font-size: 0.85rem;
         }
 
-        .spec-label { font-weight: 700; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; }
+        .spec-label { font-weight: 700; color: var(--text-muted); font-size: 0.7rem; text-transform: uppercase; }
         .spec-value { font-weight: 500; color: var(--text-main); }
 
-        /* --- JOB POSTING PREMIUM STYLE --- */
+        /* --- CAREER --- */
         .job-card-hero {
             background: white;
             border-radius: 12px;
@@ -304,18 +306,18 @@
         .job-card-header {
             background: var(--primary);
             color: white;
-            padding: 40px;
+            padding: clamp(20px, 5vw, 40px);
             text-align: center;
         }
 
-        .job-card-header h3 { color: white; font-size: 2rem; margin-bottom: 10px; }
-        .job-meta { font-weight: 500; opacity: 0.9; font-size: 1rem; }
+        .job-card-header h3 { color: white; font-size: clamp(1.25rem, 4vw, 2rem); margin-bottom: 10px; }
+        .job-meta { font-weight: 500; opacity: 0.9; font-size: 0.875rem; }
 
-        .job-card-content { padding: 50px; }
+        .job-card-content { padding: clamp(20px, 5vw, 50px); }
         .job-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
             margin-top: 30px;
         }
 
@@ -327,34 +329,83 @@
             font-size: 1.1rem;
         }
 
-        /* --- CONTACT STYLING --- */
+        /* --- CONTACT --- */
         .contact-box {
-            padding: 30px;
+            padding: 25px;
             background: white;
             border-radius: 8px;
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--border);
-            height: 100%;
         }
-        .contact-box h3 { margin-bottom: 1rem; color: var(--primary); }
-        .contact-detail { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-weight: 500; }
-        .contact-detail i { color: var(--primary); width: 20px; text-align: center; }
+        .contact-detail { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; font-size: 0.9rem; }
+        .contact-detail i { color: var(--primary); width: 20px; text-align: center; margin-top: 4px; }
 
         /* --- FOOTER --- */
         footer {
             background: #111;
             color: #9ca3af;
-            padding: 60px 0;
+            padding: 40px 0;
             text-align: center;
             border-top: 8px solid var(--primary);
         }
 
+        /* --- MOBILE REFINEMENTS (Proper Format) --- */
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .grid-3 { grid-template-columns: 1fr; }
-            .job-card-content { padding: 25px; }
-            .section-padding { padding: 50px 0; }
-            h2 { font-size: 1.75rem; }
+            #main-header .container {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.75rem 1.25rem;
+                padding-bottom: 5px;
+            }
+
+            .nav-links a {
+                font-size: 0.75rem;
+            }
+
+            .nav-links li:last-child {
+                width: 100%;
+                text-align: center;
+                margin-top: 5px;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 200px;
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                margin-top: 2rem;
+            }
+
+            hr.accent { margin: 15px auto 30px auto; }
+
+            .quote-block {
+                margin: 30px 0;
+                padding: 20px;
+            }
+
+            .list-container {
+                text-align: center;
+            }
+
+            .list-container h3 {
+                font-size: 1.25rem;
+            }
+
+            .flex-list li {
+                font-size: 0.875rem;
+            }
+
+            .contact-box {
+                margin-bottom: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -388,7 +439,7 @@
         </div>
 
         <div class="container section-padding">
-            <div style="text-align:center; max-width: 800px; margin: 0 auto 60px;">
+            <div style="text-align:center; max-width: 800px; margin: 0 auto clamp(30px, 5vw, 60px);">
                 <h2>Core Machining Expertise</h2>
                 <hr class="accent" style="margin-left:auto; margin-right:auto;">
             </div>
@@ -412,17 +463,17 @@
                 <div class="card">
                     <i class="fa-solid fa-cubes"></i>
                     <h3>Die & Mould Manufacturing</h3>
-                    <p>High-precision manufacturing of plastic injection moulds, die-casting dies, and custom tooling.</p>
+                    <p>High-precision manufacturing of plastic injection moulds, die-casting dies, and custom tooling for a wide range of industries.</p>
                 </div>
                 <div class="card">
                     <i class="fa-solid fa-hammer"></i>
                     <h3>Pressure Die Casting Tooling</h3>
-                    <p>End-to-end development of moulds including tool design, machining, fitting, and validation.</p>
+                    <p>End-to-end development of moulds including tool design, machining, EDM, fitting, and validation.</p>
                 </div>
                 <div class="card">
                     <i class="fa-solid fa-flask"></i>
                     <h3>Injection Molding & Materials</h3>
-                    <p>Production-ready support featuring mould trials, polymer selection, and component supply.</p>
+                    <p>Production-ready support featuring mould trials, polymer selection, and supply of moulded components.</p>
                 </div>
             </div>
 
@@ -431,7 +482,7 @@
             </div>
 
             <!-- MATERIALS AND INDUSTRIES -->
-            <div class="grid-3" style="margin-top: 5rem;">
+            <div class="grid-3" style="margin-top: clamp(2rem, 5vw, 5rem);">
                 <div class="list-container">
                     <h3>Materials We Master</h3>
                     <hr class="accent">
@@ -454,14 +505,14 @@
                             <i class="fa-solid fa-circle-check"></i> 
                             <div>
                                 <span class="list-label">Cast Iron Components</span>
-                                <span class="list-desc">Comprehensive machining solutions for Gray Cast Iron and Ductile Iron.</span>
+                                <span class="list-desc">Comprehensive machining solutions for Gray Cast Iron and Ductile Iron components.</span>
                             </div>
                         </li>
                         <li>
                             <i class="fa-solid fa-circle-check"></i> 
                             <div>
                                 <span class="list-label">Engineering Polymers</span>
-                                <span class="list-desc">Delrin, Nylon, PEEK, ABS, Polycarbonate, and other industrial plastics.</span>
+                                <span class="list-desc">Delrin, Nylon, PEEK, ABS, Polycarbonate, and other industrial polymers.</span>
                             </div>
                         </li>
                     </ul>
@@ -481,14 +532,14 @@
                             <i class="fa-solid fa-tractor"></i> 
                             <div>
                                 <span class="list-label">Agricultural Machinery</span>
-                                <span class="list-desc">Durable components for vegetable processing equipment and farming machinery.</span>
+                                <span class="list-desc">Durable parts for vegetable processing equipment and agricultural machinery.</span>
                             </div>
                         </li>
                         <li>
                             <i class="fa-solid fa-car"></i> 
                             <div>
                                 <span class="list-label">Automotive & Tooling</span>
-                                <span class="list-desc">Die casting dies, injection moulds, and critical precision automotive components.</span>
+                                <span class="list-desc">Tooling, die casting dies, injection moulds, and precision-machined automotive components.</span>
                             </div>
                         </li>
                     </ul>
@@ -538,11 +589,10 @@
             <div style="text-align:center; max-width: 800px; margin: 0 auto 50px;">
                 <h2>Production Equipment Inventory</h2>
                 <hr class="accent" style="margin-left:auto; margin-right:auto;">
-                <p>Our facility is equipped with high-performance machines ensuring high-volume production with consistently high precision.</p>
+                <p>Our state-of-the-art facility is equipped with high-performance machines, ensuring high-volume production with consistently high precision.</p>
             </div>
 
             <div class="grid-3">
-                <!-- VMC -->
                 <div class="machine-card">
                     <div class="machine-category">CNC VMC</div>
                     <h3>HAAS VF2, 4th Axis</h3>
@@ -573,67 +623,63 @@
                     <div class="spec-item"><span class="spec-label">Travel X &times; Y &times; Z</span> <span class="spec-value">762 &times; 450 &times; 460 mm</span></div>
                     <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">Pallet Changer</span></div>
                 </div>
-                <!-- HMC -->
                 <div class="machine-card">
                     <div class="machine-category">CNC HMC</div>
                     <h3>Kiwa KNH 426x</h3>
                     <div class="spec-item"><span class="spec-label">Travel X &times; Y &times; Z</span> <span class="spec-value">600 &times; 600 &times; 600 mm</span></div>
                     <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">High-Volume 6-Pallet Pool</span></div>
                 </div>
-                <!-- Turning -->
                 <div class="machine-card">
-                    <div class="machine-category">CNC TurningCenter</div>
+                    <div class="machine-category">CNC Turning</div>
                     <h3>Yantrang MICRO TURN</h3>
                     <div class="spec-item"><span class="spec-label">Model</span> <span class="spec-value">MICRO TURN</span></div>
                     <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">High-Precision Turning</span></div>
                 </div>
                 <div class="machine-card">
-                    <div class="machine-category">CNC TurningCenter</div>
+                    <div class="machine-category">CNC Turning</div>
                     <h3>Nakamura Tome SC 300</h3>
                     <div class="spec-item"><span class="spec-label">Model</span> <span class="spec-value">SC 300</span></div>
                     <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">High-Performance Turning</span></div>
                 </div>
                 <div class="machine-card">
-                    <div class="machine-category">CNC TurningCenter</div>
+                    <div class="machine-category">CNC Turning</div>
                     <h3>JOHNFORD ST 40</h3>
                     <div class="spec-item"><span class="spec-label">Model</span> <span class="spec-value">ST 40</span></div>
                     <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">Heavy-Duty Turning</span></div>
                 </div>
-                <!-- EDM -->
                 <div class="machine-card">
                     <div class="machine-category">EDM</div>
                     <h3>Sparkonix Die-Sinking</h3>
                     <div class="spec-item"><span class="spec-label">Process</span> <span class="spec-value">Die-Sinking EDM</span></div>
                     <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">Intricate Molds and Cavities</span></div>
                 </div>
-                <!-- Conventional -->
                 <div class="machine-card">
-                    <div class="machine-category">Conventional Lathe</div>
-                    <h3>Kirloskar</h3>
+                    <div class="machine-category">Conventional</div>
+                    <h3>Kirloskar Lathe</h3>
                     <div class="spec-item"><span class="spec-label">Model</span> <span class="spec-value">Kirloskar</span></div>
                     <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">General Purpose Turning</span></div>
                 </div>
                 <div class="machine-card">
-                    <div class="machine-category">Big Bore Lathe</div>
-                    <h3>Aashu</h3>
+                    <div class="machine-category">Conventional</div>
+                    <h3>Aashu Big Bore</h3>
                     <div class="spec-item"><span class="spec-label">Model</span> <span class="spec-value">Aashu</span></div>
                     <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">Large Diameter Capacity</span></div>
                 </div>
                 <div class="machine-card">
-                    <div class="machine-category">Surface Grinder</div>
-                    <h3>Churchil</h3>
+                    <div class="machine-category">Grinding</div>
+                    <h3>Churchil Surface</h3>
                     <div class="spec-item"><span class="spec-label">Model</span> <span class="spec-value">Churchil</span></div>
                     <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">Precision Flat Finishing</span></div>
                 </div>
                 <div class="machine-card">
-                    <div class="machine-category">Centreless Grinder</div>
-                    <h3>Stanko</h3>
+                    <div class="machine-category">Grinding</div>
+                    <h3>Stanko Centreless</h3>
                     <div class="spec-item"><span class="spec-label">Model</span> <span class="spec-value">Stanko</span></div>
                     <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">High-Volume Cylindrical Grinding</span></div>
                 </div>
                 <div class="machine-card">
-                    <div class="machine-category">Conventional Milling</div>
-                    <h3>Elliot</h3>
+                    <div class="machine-category">Conventional</div>
+                    <h3>Elliot Milling</h3>
                     <div class="spec-item"><span class="spec-label">Model</span> <span class="spec-value">Elliot</span></div>
                     <div class="spec-item"><span class="spec-label">Key Feature</span> <span class="spec-value">Tooling and Setup Support</span></div>
                 </div>
@@ -715,7 +761,7 @@
 
                     <div style="text-align: center; margin-top: 40px;">
                         <p style="margin-bottom: 20px; font-weight: 600;">Interested? Send your CV to our HR team:</p>
-                        <a href="mailto:info@kaptron.in" style="font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none;">info@kaptron.in</a>
+                        <a href="mailto:info@kaptron.in" style="font-size: 1.25rem; font-weight: 700; color: var(--primary); text-decoration: none;">info@kaptron.in</a>
                     </div>
                 </div>
             </div>
@@ -763,7 +809,6 @@
     <footer>
         <div class="container">
             <p>&copy; <span id="year"></span> Kaptron Plastics & Metals. All rights reserved.</p>
-            <p style="margin-top: 8px; opacity: 0.7;">ISO 9001:2015 Compliant Production Hub | Punjab, India</p>
         </div>
     </footer>
 
